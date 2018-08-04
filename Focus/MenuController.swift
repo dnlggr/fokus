@@ -56,14 +56,41 @@ class MenuController: NSObject {
     // MARK: - Focus
     
     func moveFocus(toward direction: Direction) {
-        let screen = Screen(windows: WindowInfo.all!.map { Window(bounds: $0.bounds) })
+        let screen = Screen(windows: WindowInfo.all!.map { Window(bounds: $0.bounds, title: $0.title) })
         
-        let currentWindow = Window(bounds: WindowInfo.current!.bounds)
+        let currentWindow = Window(bounds: WindowInfo.current!.bounds, title:  WindowInfo.current!.title)
         
-        let neighborWindow = screen.neighbor(of: currentWindow, toward: .east)!
+        let neighborWindow = screen.neighbor(of: currentWindow, toward: direction)!
         
-        NSRunningApplication(
-            processIdentifier: WindowInfo.foremost(with: neighborWindow.bounds)!.ownerPID
-        )?.activate(options: .activateIgnoringOtherApps)
+        let neighborPID = WindowInfo.foremost(with: neighborWindow.bounds)!.ownerPID
+        
+        let app = AXUIElementCreateApplication(neighborPID)
+        var windowsRef: AnyObject?
+        AXUIElementCopyAttributeValue(app, kAXWindowsAttribute as CFString, &windowsRef)
+        let windows = windowsRef as! Array<AXUIElement>
+        
+        let window = windows.first { window in
+            var positionRef: AnyObject?
+            AXUIElementCopyAttributeValue(window, kAXPositionAttribute as CFString, &positionRef)
+            var sizeRef: AnyObject?
+            AXUIElementCopyAttributeValue(window, kAXSizeAttribute as CFString, &sizeRef)
+            var titleRef: AnyObject?
+            AXUIElementCopyAttributeValue(window, kAXTitleAttribute as CFString, &titleRef)
+            
+            var origin = CGPoint.zero
+            AXValueGetValue(positionRef as! AXValue, .cgPoint, &origin)
+        
+            var size = CGSize.zero
+            AXValueGetValue(sizeRef as! AXValue, .cgSize, &size)
+            
+            let bounds = CGRect(origin: origin, size: size)
+            
+            let title = titleRef as? String
+            
+            return bounds == neighborWindow.bounds && title == neighborWindow.title
+        }
+        
+        NSRunningApplication(processIdentifier: neighborPID)?.activate(options: .activateIgnoringOtherApps)
+        AXUIElementPerformAction(window!, kAXRaiseAction as CFString)
     }
 }

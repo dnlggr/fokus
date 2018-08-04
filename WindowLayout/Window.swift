@@ -10,9 +10,11 @@ import Foundation
 
 public struct Window {
     public let bounds: CGRect
+    public let title: String?
     
-    public init(bounds: CGRect) {
+    public init(bounds: CGRect, title: String? = nil) {
         self.bounds = bounds
+        self.title = title
     }
 }
 

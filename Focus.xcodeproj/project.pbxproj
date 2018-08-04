@@ -22,6 +22,7 @@
 		65FE6F9F21164A35009BECBD /* HotKey.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65FE6F9D21164A35009BECBD /* HotKey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65FE6FA221164A63009BECBD /* HotKey.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65FE6FA121164A62009BECBD /* HotKey.framework.dSYM */; };
 		65FE6FA4211652EE009BECBD /* WindowInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FE6FA3211652EE009BECBD /* WindowInfo.swift */; };
+		65FE6FA621166397009BECBD /* Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FE6FA521166397009BECBD /* Accessibility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		65FE6F9D21164A35009BECBD /* HotKey.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HotKey.framework; path = Carthage/Build/Mac/HotKey.framework; sourceTree = "<group>"; };
 		65FE6FA121164A62009BECBD /* HotKey.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = HotKey.framework.dSYM; path = Carthage/Build/Mac/HotKey.framework.dSYM; sourceTree = "<group>"; };
 		65FE6FA3211652EE009BECBD /* WindowInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowInfo.swift; sourceTree = "<group>"; };
+		65FE6FA521166397009BECBD /* Accessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessibility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 				65FE6F66211640C2009BECBD /* Assets.xcassets */,
 				65FE6F68211640C2009BECBD /* MainMenu.xib */,
 				65FE6F722116420C009BECBD /* MenuController.swift */,
+				65FE6FA521166397009BECBD /* Accessibility.swift */,
 				65FE6FA3211652EE009BECBD /* WindowInfo.swift */,
 				65FE6F6B211640C2009BECBD /* Info.plist */,
 				65FE6F6C211640C2009BECBD /* Focus.entitlements */,
@@ -324,6 +327,7 @@
 			files = (
 				65FE6F65211640C1009BECBD /* AppDelegate.swift in Sources */,
 				65FE6FA4211652EE009BECBD /* WindowInfo.swift in Sources */,
+				65FE6FA621166397009BECBD /* Accessibility.swift in Sources */,
 				65FE6F732116420C009BECBD /* MenuController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

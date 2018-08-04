@@ -15,6 +15,10 @@ struct WindowInfo {
         return CGRect(dictionaryRepresentation: info[kCGWindowBounds] as! CFDictionary)!
     }
     
+    var title: String {
+        return info[kCGWindowName] as! String
+    }
+    
     var ownerPID: Int32 {
         return info[kCGWindowOwnerPID] as! Int32
     }
@@ -24,7 +28,7 @@ extension WindowInfo {
     static var all: [WindowInfo]? {
         var windowInfos = CGWindowListCopyWindowInfo(
             [ .optionOnScreenOnly, .excludeDesktopElements ], kCGNullWindowID
-            ) as! [[CFString: AnyObject]]
+        ) as! [[CFString: AnyObject]]
         
         windowInfos = windowInfos.filter { $0[kCGWindowLayer] as! Int32 == 0 }
         
