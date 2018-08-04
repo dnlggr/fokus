@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MenuViewController.swift
 //  Focus
 //
 //  Created by Daniel on 04.08.18.
@@ -7,16 +7,52 @@
 //
 
 import Cocoa
-import WindowKit
+import WindowLayout
+import HotKey
 
-class ViewController: NSViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+class MenuController: NSObject {
+    
+    var statusMenu: NSMenu!
+    
+    let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
+    let hotKey = HotKey(key: .l, modifiers: .option)
+    
+    override func awakeFromNib() {
+        setupIcon()
+        setupMenu()
         
+        registerHotKeys()
+    }
+    
+    func setupIcon() {
+        let icon = NSImage(named: NSImage.Name("StatusBarButtonImage"))
+        icon?.isTemplate = true
+        statusItem.image = icon
+    }
+    
+    func setupMenu() {
+        statusMenu = NSMenu()
+        let testItem = NSMenuItem(title: "Test", action: #selector(testClicked(_:)), keyEquivalent: "l")
+        testItem.keyEquivalentModifierMask = .option
+        testItem.target = self
+        statusMenu.addItem(testItem)
+        statusMenu.addItem(NSMenuItem.separator())
+        statusMenu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        statusItem.menu = statusMenu
+    }
+    
+    func registerHotKeys() {
+        hotKey.keyDownHandler = doTest
+    }
+    
+    @objc func testClicked(_ sender: Any?) {
+        doTest()
+    }
+    
+    func doTest() {
         var windowInfos = CGWindowListCopyWindowInfo(
             [ .optionOnScreenOnly, .excludeDesktopElements ], kCGNullWindowID
-        ) as! [[CFString: AnyObject]]
+            ) as! [[CFString: AnyObject]]
         
         windowInfos = windowInfos.filter {
             return CGRect(dictionaryRepresentation: $0[kCGWindowBounds] as! CFDictionary)!.height > 22
@@ -44,12 +80,4 @@ class ViewController: NSViewController {
         
         neighborApp!.activate(options: .activateIgnoringOtherApps)
     }
-    
-    func filtered(_ windows: [[CFString: AnyObject]]) -> [[CFString: AnyObject]] {
-       return windows.filter { window in
-            let bounds = CGRect(dictionaryRepresentation: window[kCGWindowBounds] as! CFDictionary)!
-            return bounds.height > 22
-        }
-    }
-    
 }
