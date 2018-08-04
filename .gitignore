@@ -1,5 +1,13 @@
 
-# Created by https://www.gitignore.io/api/xcode,macos
+# Created by https://www.gitignore.io/api/xcode,macos,carthage
+
+### Carthage ###
+# Carthage
+#
+# Add this line if you want to avoid checking in source code from Carthage dependencies.
+# Carthage/Checkouts
+
+Carthage/Build
 
 ### macOS ###
 # General
@@ -62,4 +70,4 @@ DerivedData/
 /*.gcno
 
 
-# End of https://www.gitignore.io/api/xcode,macos
+# End of https://www.gitignore.io/api/xcode,macos,carthage
