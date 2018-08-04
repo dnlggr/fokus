@@ -7,15 +7,23 @@
 //
 
 import Cocoa
-import WindowLayout
 import HotKey
+import WindowLayout
 
 class MenuController: NSObject {
+    
+    // MARK: - Properties
     
     var statusMenu: NSMenu!
     
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
-    let hotKey = HotKey(key: .l, modifiers: .option)
+    
+    let hotKeyNorth = HotKey(key: .k, modifiers: .option)
+    let hotKeyEast = HotKey(key: .l, modifiers: .option)
+    let hotKeySouth = HotKey(key: .j, modifiers: .option)
+    let hotKeyWest = HotKey(key: .h, modifiers: .option)
+    
+    // MARK: - Initialization
     
     override func awakeFromNib() {
         setupIcon()
@@ -32,52 +40,30 @@ class MenuController: NSObject {
     
     func setupMenu() {
         statusMenu = NSMenu()
-        let testItem = NSMenuItem(title: "Test", action: #selector(testClicked(_:)), keyEquivalent: "l")
-        testItem.keyEquivalentModifierMask = .option
-        testItem.target = self
-        statusMenu.addItem(testItem)
-        statusMenu.addItem(NSMenuItem.separator())
-        statusMenu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        statusMenu.addItem(
+            NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
+        )
         statusItem.menu = statusMenu
     }
     
     func registerHotKeys() {
-        hotKey.keyDownHandler = doTest
+        hotKeyNorth.keyDownHandler = { self.moveFocus(toward: .north) }
+        hotKeyEast.keyDownHandler = { self.moveFocus(toward: .east) }
+        hotKeySouth.keyDownHandler = { self.moveFocus(toward: .south) }
+        hotKeyWest.keyDownHandler = { self.moveFocus(toward: .west) }
     }
     
-    @objc func testClicked(_ sender: Any?) {
-        doTest()
-    }
+    // MARK: - Focus
     
-    func doTest() {
-        var windowInfos = CGWindowListCopyWindowInfo(
-            [ .optionOnScreenOnly, .excludeDesktopElements ], kCGNullWindowID
-            ) as! [[CFString: AnyObject]]
+    func moveFocus(toward direction: Direction) {
+        let screen = Screen(windows: WindowInfo.all!.map { Window(bounds: $0.bounds) })
         
-        windowInfos = windowInfos.filter {
-            return CGRect(dictionaryRepresentation: $0[kCGWindowBounds] as! CFDictionary)!.height > 22
-        }
+        let currentWindow = Window(bounds: WindowInfo.current!.bounds)
         
-        let windows = windowInfos.map {
-            return Window(bounds: CGRect(dictionaryRepresentation: $0[kCGWindowBounds] as! CFDictionary)!)
-        }
+        let neighborWindow = screen.neighbor(of: currentWindow, toward: .east)!
         
-        let numiInfo = windowInfos.first(where: {
-            return "Numi" == $0[kCGWindowOwnerName] as! CFString as String
-        })!
-        
-        let numi = Window(bounds: CGRect(dictionaryRepresentation: numiInfo[kCGWindowBounds] as! CFDictionary)!)
-        
-        let screen = Screen(windows: windows)
-        
-        let neighbor = screen.neighbor(of: numi, toward: .east)!
-        
-        let neighborInfo = windowInfos.first(where: {
-            Window(bounds: CGRect(dictionaryRepresentation: $0[kCGWindowBounds] as! CFDictionary)!) == neighbor
-        })!
-        
-        let neighborApp = NSRunningApplication(processIdentifier: neighborInfo[kCGWindowOwnerPID] as! Int32)
-        
-        neighborApp!.activate(options: .activateIgnoringOtherApps)
+        NSRunningApplication(
+            processIdentifier: WindowInfo.foremost(with: neighborWindow.bounds)!.ownerPID
+        )?.activate(options: .activateIgnoringOtherApps)
     }
 }

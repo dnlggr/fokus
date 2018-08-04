@@ -9,7 +9,7 @@
 import Foundation
 
 public struct Window {
-    let bounds: CGRect
+    public let bounds: CGRect
     
     public init(bounds: CGRect) {
         self.bounds = bounds
