@@ -15,12 +15,14 @@ class Accessibility {
     static func application(for pid: Int32) -> AccessibilityApplication {
         return AXUIElementCreateApplication(pid)
     }
-    
-    static func windows(for application: AccessibilityApplication) -> [AccessibilityWindow] {
+}
+
+extension Accessibility.AccessibilityApplication {
+    var windows: [Accessibility.AccessibilityWindow] {
         var windows: AnyObject?
-        AXUIElementCopyAttributeValue(application, kAXWindowsAttribute as CFString, &windows)
+        AXUIElementCopyAttributeValue(self, kAXWindowsAttribute as CFString, &windows)
         
-        return windows as? Array<AccessibilityWindow> ?? []
+        return windows as? Array<Accessibility.AccessibilityWindow> ?? []
     }
 }
 
