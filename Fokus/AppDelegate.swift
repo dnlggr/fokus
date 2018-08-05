@@ -9,4 +9,15 @@
 import Cocoa
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate { }
+class AppDelegate: NSObject, NSApplicationDelegate {
+    
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        checkAccessibilityAccess()
+    }
+    
+    func checkAccessibilityAccess() {
+        let options = [ kAXTrustedCheckOptionPrompt.takeUnretainedValue(): true ]
+        AXIsProcessTrustedWithOptions(options as CFDictionary)
+    }
+    
+}
