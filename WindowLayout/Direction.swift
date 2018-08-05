@@ -26,4 +26,17 @@ public enum Direction {
             return .east
         }
     }
+    
+    var axis: Axis {
+        switch self {
+        case .north:
+            return .vertical
+        case .east:
+            return .horizontal
+        case .south:
+            return .vertical
+        case .west:
+            return .horizontal
+        }
+    }
 }

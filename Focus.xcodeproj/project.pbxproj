@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6557B3602117263A00B203E0 /* Window+Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557B35F2117263A00B203E0 /* Window+Sorting.swift */; };
+		6557B36221175B9100B203E0 /* Axis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557B36121175B9100B203E0 /* Axis.swift */; };
 		65FE6F65211640C1009BECBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FE6F64211640C1009BECBD /* AppDelegate.swift */; };
 		65FE6F67211640C2009BECBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65FE6F66211640C2009BECBD /* Assets.xcassets */; };
 		65FE6F6A211640C2009BECBD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65FE6F68211640C2009BECBD /* MainMenu.xib */; };
@@ -75,6 +77,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6557B35F2117263A00B203E0 /* Window+Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Window+Sorting.swift"; sourceTree = "<group>"; };
+		6557B36121175B9100B203E0 /* Axis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Axis.swift; sourceTree = "<group>"; };
 		65FE6F61211640C1009BECBD /* Focus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Focus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65FE6F64211640C1009BECBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65FE6F66211640C2009BECBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -165,8 +169,10 @@
 			isa = PBXGroup;
 			children = (
 				65FE6F99211646C2009BECBD /* Direction.swift */,
+				6557B36121175B9100B203E0 /* Axis.swift */,
 				65FE6F98211646C2009BECBD /* Screen.swift */,
 				65FE6F97211646C2009BECBD /* Window.swift */,
+				6557B35F2117263A00B203E0 /* Window+Sorting.swift */,
 				65FE6F7C211646A7009BECBD /* Info.plist */,
 			);
 			path = WindowLayout;
@@ -337,7 +343,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				65FE6F9A211646C2009BECBD /* Window.swift in Sources */,
+				6557B36221175B9100B203E0 /* Axis.swift in Sources */,
 				65FE6F9B211646C2009BECBD /* Screen.swift in Sources */,
+				6557B3602117263A00B203E0 /* Window+Sorting.swift in Sources */,
 				65FE6F9C211646C2009BECBD /* Direction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

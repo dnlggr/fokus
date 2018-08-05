@@ -25,7 +25,7 @@ struct WindowInfo {
 }
 
 extension WindowInfo {
-    static var all: [WindowInfo]? {
+    static var all: [WindowInfo] {
         var windowInfos = CGWindowListCopyWindowInfo(
             [ .optionOnScreenOnly, .excludeDesktopElements ], kCGNullWindowID
         ) as! [[CFString: AnyObject]]
@@ -36,10 +36,10 @@ extension WindowInfo {
     }
     
     static var current: WindowInfo? {
-        return all?.first
+        return all.first
     }
     
     static func foremost(with bounds: CGRect) -> WindowInfo?  {
-        return WindowInfo.all?.first { $0.bounds == bounds }
+        return WindowInfo.all.first { $0.bounds == bounds }
     }
 }
