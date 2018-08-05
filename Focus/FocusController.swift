@@ -41,6 +41,28 @@ class FocusController: NSObject {
     
     func setupMenu() {
         statusMenu = NSMenu()
+        
+        let itemNorth = NSMenuItem(
+            title: "Focus North", action: #selector(FocusController.moveFocusNorth), keyEquivalent: "k"
+        )
+        let itemEast = NSMenuItem(
+            title: "Focus East", action: #selector(FocusController.moveFocusEast), keyEquivalent: "l"
+        )
+        let itemSouth = NSMenuItem(
+            title: "Focus South", action: #selector(FocusController.moveFocusSouth), keyEquivalent: "j"
+        )
+        let itemWest = NSMenuItem(
+            title: "Focus West", action: #selector(FocusController.moveFocusWest), keyEquivalent: "h"
+        )
+        
+        _ = [ itemNorth, itemEast, itemSouth, itemWest ].map {
+            $0.target = self
+            $0.keyEquivalentModifierMask = .option
+            
+            statusMenu.addItem($0)
+        }
+        
+        statusMenu.addItem(NSMenuItem.separator())
         statusMenu.addItem(withTitle: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
         
         statusItem.menu = statusMenu
@@ -52,6 +74,13 @@ class FocusController: NSObject {
         hotKeySouth.keyDownHandler = { self.moveFocus(toward: .south) }
         hotKeyWest.keyDownHandler = { self.moveFocus(toward: .west) }
     }
+    
+    // MARK: - Selectors
+    
+    @objc func moveFocusNorth() { moveFocus(toward: .north) }
+    @objc func moveFocusEast() { moveFocus(toward: .east) }
+    @objc func moveFocusSouth() { moveFocus(toward: .south) }
+    @objc func moveFocusWest() { moveFocus(toward: .west) }
     
     // MARK: - Focus
     
