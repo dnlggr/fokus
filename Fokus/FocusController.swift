@@ -43,16 +43,16 @@ class FocusController: NSObject {
         statusMenu = NSMenu()
         
         let itemNorth = NSMenuItem(
-            title: "Focus North", action: #selector(FocusController.moveFocusNorth), keyEquivalent: "k"
+            title: "Focus up", action: #selector(FocusController.moveFocusNorth), keyEquivalent: "k"
         )
         let itemEast = NSMenuItem(
-            title: "Focus East", action: #selector(FocusController.moveFocusEast), keyEquivalent: "l"
+            title: "Focus right", action: #selector(FocusController.moveFocusEast), keyEquivalent: "l"
         )
         let itemSouth = NSMenuItem(
-            title: "Focus South", action: #selector(FocusController.moveFocusSouth), keyEquivalent: "j"
+            title: "Focus down", action: #selector(FocusController.moveFocusSouth), keyEquivalent: "j"
         )
         let itemWest = NSMenuItem(
-            title: "Focus West", action: #selector(FocusController.moveFocusWest), keyEquivalent: "h"
+            title: "Focus left", action: #selector(FocusController.moveFocusWest), keyEquivalent: "h"
         )
         
         _ = [ itemNorth, itemEast, itemSouth, itemWest ].map {
