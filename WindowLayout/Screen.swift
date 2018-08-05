@@ -17,9 +17,9 @@ public struct Screen {
     
     public func neighbor(of window: Window, toward direction: Direction) -> Window? {
         let neighboringWindows = neighborhood(of: window, toward: direction)
-        let sortedNeighborhood = try! neighboringWindows.sorted(from: direction.opposite, to: direction)
+        let presortedNeighborhood = try! neighboringWindows.sorted(from: direction.opposite, to: direction)
         
-        return sortedNeighborhood.first
+        return window.nearest(from: presortedNeighborhood, on: direction.axis.opposite)
     }
     
     private func neighborhood(of window: Window, toward direction: Direction) -> [Window] {

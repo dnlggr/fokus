@@ -11,4 +11,13 @@ import Foundation
 enum Axis {
     case horizontal
     case vertical
+    
+    var opposite: Axis {
+        switch self {
+        case .horizontal:
+            return .vertical
+        case .vertical:
+            return .horizontal
+        }
+    }
 }
