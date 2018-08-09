@@ -13,7 +13,7 @@
 		65FE6F65211640C1009BECBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FE6F64211640C1009BECBD /* AppDelegate.swift */; };
 		65FE6F67211640C2009BECBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65FE6F66211640C2009BECBD /* Assets.xcassets */; };
 		65FE6F6A211640C2009BECBD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65FE6F68211640C2009BECBD /* MainMenu.xib */; };
-		65FE6F732116420C009BECBD /* FocusController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FE6F722116420C009BECBD /* FocusController.swift */; };
+		65FE6F732116420C009BECBD /* FokusController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FE6F722116420C009BECBD /* FokusController.swift */; };
 		65FE6F8E211646A8009BECBD /* WindowLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65FE6F79211646A7009BECBD /* WindowLayout.framework */; };
 		65FE6F8F211646A8009BECBD /* WindowLayout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65FE6F79211646A7009BECBD /* WindowLayout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65FE6F9A211646C2009BECBD /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FE6F97211646C2009BECBD /* Window.swift */; };
@@ -71,7 +71,7 @@
 		65FE6F69211640C2009BECBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		65FE6F6B211640C2009BECBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65FE6F6C211640C2009BECBD /* Fokus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fokus.entitlements; sourceTree = "<group>"; };
-		65FE6F722116420C009BECBD /* FocusController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusController.swift; sourceTree = "<group>"; };
+		65FE6F722116420C009BECBD /* FokusController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FokusController.swift; sourceTree = "<group>"; };
 		65FE6F79211646A7009BECBD /* WindowLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WindowLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65FE6F7C211646A7009BECBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65FE6F97211646C2009BECBD /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 				65FE6F64211640C1009BECBD /* AppDelegate.swift */,
 				65FE6F66211640C2009BECBD /* Assets.xcassets */,
 				65FE6F68211640C2009BECBD /* MainMenu.xib */,
-				65FE6F722116420C009BECBD /* FocusController.swift */,
+				65FE6F722116420C009BECBD /* FokusController.swift */,
 				65FE6FA521166397009BECBD /* Accessibility.swift */,
 				65FE6FA3211652EE009BECBD /* WindowInfo.swift */,
 				65FE6F6B211640C2009BECBD /* Info.plist */,
@@ -268,7 +268,7 @@
 				65FE6F65211640C1009BECBD /* AppDelegate.swift in Sources */,
 				65FE6FA4211652EE009BECBD /* WindowInfo.swift in Sources */,
 				65FE6FA621166397009BECBD /* Accessibility.swift in Sources */,
-				65FE6F732116420C009BECBD /* FocusController.swift in Sources */,
+				65FE6F732116420C009BECBD /* FokusController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 //
-//  FocusController.swift
+//  FokusController.swift
 //  Focus
 //
 //  Created by Daniel on 04.08.18.
@@ -10,18 +10,17 @@ import Cocoa
 import HotKey
 import WindowLayout
 
-class FocusController: NSObject {
+class FokusController: NSObject {
     
     // MARK: - Properties
     
-    var statusMenu: NSMenu!
+    let statusMenu = NSMenu()
+    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
-    let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
-    
-    let hotKeyNorth = HotKey(key: .k, modifiers: .option)
-    let hotKeyEast = HotKey(key: .l, modifiers: .option)
-    let hotKeySouth = HotKey(key: .j, modifiers: .option)
-    let hotKeyWest = HotKey(key: .h, modifiers: .option)
+    let hotKeyNorth = HotKey(key: .k, modifiers: .control)
+    let hotKeyEast = HotKey(key: .l, modifiers: .control)
+    let hotKeySouth = HotKey(key: .j, modifiers: .control)
+    let hotKeyWest = HotKey(key: .h, modifiers: .control)
     
     // MARK: - Initialization
     
@@ -40,24 +39,22 @@ class FocusController: NSObject {
     }
     
     func setupMenu() {
-        statusMenu = NSMenu()
-        
         let itemNorth = NSMenuItem(
-            title: "Focus up", action: #selector(FocusController.moveFocusNorth), keyEquivalent: "k"
+            title: "Focus up", action: #selector(FokusController.moveFocusNorth), keyEquivalent: "k"
         )
         let itemEast = NSMenuItem(
-            title: "Focus right", action: #selector(FocusController.moveFocusEast), keyEquivalent: "l"
+            title: "Focus right", action: #selector(FokusController.moveFocusEast), keyEquivalent: "l"
         )
         let itemSouth = NSMenuItem(
-            title: "Focus down", action: #selector(FocusController.moveFocusSouth), keyEquivalent: "j"
+            title: "Focus down", action: #selector(FokusController.moveFocusSouth), keyEquivalent: "j"
         )
         let itemWest = NSMenuItem(
-            title: "Focus left", action: #selector(FocusController.moveFocusWest), keyEquivalent: "h"
+            title: "Focus left", action: #selector(FokusController.moveFocusWest), keyEquivalent: "h"
         )
         
         _ = [ itemNorth, itemEast, itemSouth, itemWest ].map {
             $0.target = self
-            $0.keyEquivalentModifierMask = .option
+            $0.keyEquivalentModifierMask = .control
             
             statusMenu.addItem($0)
         }
