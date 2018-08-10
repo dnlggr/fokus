@@ -10,6 +10,12 @@
 		6557B3602117263A00B203E0 /* Window+Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557B35F2117263A00B203E0 /* Window+Sorting.swift */; };
 		6557B36221175B9100B203E0 /* Axis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557B36121175B9100B203E0 /* Axis.swift */; };
 		6557B3642117667900B203E0 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557B3632117667900B203E0 /* Geometry.swift */; };
+		65E27150211CE16100A90FC1 /* DotfileParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E27147211CE16100A90FC1 /* DotfileParser.framework */; };
+		65E27157211CE16100A90FC1 /* DotfileParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E27156211CE16100A90FC1 /* DotfileParserTests.swift */; };
+		65E2715C211CE16200A90FC1 /* DotfileParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E27147211CE16100A90FC1 /* DotfileParser.framework */; };
+		65E2715D211CE16200A90FC1 /* DotfileParser.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65E27147211CE16100A90FC1 /* DotfileParser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65E27165211CE17C00A90FC1 /* Lexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E27164211CE17C00A90FC1 /* Lexer.swift */; };
+		65E27167211CE9EA00A90FC1 /* Dotfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E27166211CE9EA00A90FC1 /* Dotfile.swift */; };
 		65FE6F65211640C1009BECBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FE6F64211640C1009BECBD /* AppDelegate.swift */; };
 		65FE6F67211640C2009BECBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65FE6F66211640C2009BECBD /* Assets.xcassets */; };
 		65FE6F6A211640C2009BECBD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65FE6F68211640C2009BECBD /* MainMenu.xib */; };
@@ -27,6 +33,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		65E27151211CE16100A90FC1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65FE6F59211640C1009BECBD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 65E27146211CE16100A90FC1;
+			remoteInfo = DotfileParser;
+		};
+		65E27153211CE16100A90FC1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65FE6F59211640C1009BECBD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 65FE6F60211640C1009BECBD;
+			remoteInfo = Fokus;
+		};
+		65E2715A211CE16200A90FC1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65FE6F59211640C1009BECBD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 65E27146211CE16100A90FC1;
+			remoteInfo = DotfileParser;
+		};
 		65FE6F8C211646A8009BECBD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 65FE6F59211640C1009BECBD /* Project object */;
@@ -43,6 +70,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				65E2715D211CE16200A90FC1 /* DotfileParser.framework in Embed Frameworks */,
 				65FE6F9F21164A35009BECBD /* HotKey.framework in Embed Frameworks */,
 				65FE6F8F211646A8009BECBD /* WindowLayout.framework in Embed Frameworks */,
 			);
@@ -65,6 +93,13 @@
 		6557B35F2117263A00B203E0 /* Window+Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Window+Sorting.swift"; sourceTree = "<group>"; };
 		6557B36121175B9100B203E0 /* Axis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Axis.swift; sourceTree = "<group>"; };
 		6557B3632117667900B203E0 /* Geometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
+		65E27147211CE16100A90FC1 /* DotfileParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DotfileParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		65E2714A211CE16100A90FC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65E2714F211CE16100A90FC1 /* DotfileParserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DotfileParserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		65E27156211CE16100A90FC1 /* DotfileParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotfileParserTests.swift; sourceTree = "<group>"; };
+		65E27158211CE16200A90FC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65E27164211CE17C00A90FC1 /* Lexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lexer.swift; sourceTree = "<group>"; };
+		65E27166211CE9EA00A90FC1 /* Dotfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dotfile.swift; sourceTree = "<group>"; };
 		65FE6F61211640C1009BECBD /* Fokus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fokus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65FE6F64211640C1009BECBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65FE6F66211640C2009BECBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -84,10 +119,26 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		65E27143211CE16100A90FC1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65E2714C211CE16100A90FC1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65E27150211CE16100A90FC1 /* DotfileParser.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		65FE6F5E211640C1009BECBD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65E2715C211CE16200A90FC1 /* DotfileParser.framework in Frameworks */,
 				65FE6F9E21164A35009BECBD /* HotKey.framework in Frameworks */,
 				65FE6F8E211646A8009BECBD /* WindowLayout.framework in Frameworks */,
 			);
@@ -103,6 +154,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		65E27148211CE16100A90FC1 /* DotfileParser */ = {
+			isa = PBXGroup;
+			children = (
+				65E2714A211CE16100A90FC1 /* Info.plist */,
+				65E27164211CE17C00A90FC1 /* Lexer.swift */,
+				65E27166211CE9EA00A90FC1 /* Dotfile.swift */,
+			);
+			path = DotfileParser;
+			sourceTree = "<group>";
+		};
+		65E27155211CE16100A90FC1 /* DotfileParserTests */ = {
+			isa = PBXGroup;
+			children = (
+				65E27156211CE16100A90FC1 /* DotfileParserTests.swift */,
+				65E27158211CE16200A90FC1 /* Info.plist */,
+			);
+			path = DotfileParserTests;
+			sourceTree = "<group>";
+		};
 		65FE6F58211640C1009BECBD = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +180,8 @@
 				65FE6F9D21164A35009BECBD /* HotKey.framework */,
 				65FE6F63211640C1009BECBD /* Fokus */,
 				65FE6F7A211646A7009BECBD /* WindowLayout */,
+				65E27148211CE16100A90FC1 /* DotfileParser */,
+				65E27155211CE16100A90FC1 /* DotfileParserTests */,
 				65FE6F62211640C1009BECBD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -119,6 +191,8 @@
 			children = (
 				65FE6F61211640C1009BECBD /* Fokus.app */,
 				65FE6F79211646A7009BECBD /* WindowLayout.framework */,
+				65E27147211CE16100A90FC1 /* DotfileParser.framework */,
+				65E2714F211CE16100A90FC1 /* DotfileParserTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -155,6 +229,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		65E27144211CE16100A90FC1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		65FE6F76211646A7009BECBD /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -165,6 +246,43 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		65E27146211CE16100A90FC1 /* DotfileParser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65E2715E211CE16200A90FC1 /* Build configuration list for PBXNativeTarget "DotfileParser" */;
+			buildPhases = (
+				65E27142211CE16100A90FC1 /* Sources */,
+				65E27143211CE16100A90FC1 /* Frameworks */,
+				65E27144211CE16100A90FC1 /* Headers */,
+				65E27145211CE16100A90FC1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DotfileParser;
+			productName = DotfileParser;
+			productReference = 65E27147211CE16100A90FC1 /* DotfileParser.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		65E2714E211CE16100A90FC1 /* DotfileParserTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65E27161211CE16200A90FC1 /* Build configuration list for PBXNativeTarget "DotfileParserTests" */;
+			buildPhases = (
+				65E2714B211CE16100A90FC1 /* Sources */,
+				65E2714C211CE16100A90FC1 /* Frameworks */,
+				65E2714D211CE16100A90FC1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				65E27152211CE16100A90FC1 /* PBXTargetDependency */,
+				65E27154211CE16100A90FC1 /* PBXTargetDependency */,
+			);
+			name = DotfileParserTests;
+			productName = DotfileParserTests;
+			productReference = 65E2714F211CE16100A90FC1 /* DotfileParserTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		65FE6F60211640C1009BECBD /* Fokus */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65FE6F6F211640C2009BECBD /* Build configuration list for PBXNativeTarget "Fokus" */;
@@ -179,6 +297,7 @@
 			);
 			dependencies = (
 				65FE6F8D211646A8009BECBD /* PBXTargetDependency */,
+				65E2715B211CE16200A90FC1 /* PBXTargetDependency */,
 			);
 			name = Fokus;
 			productName = Focus;
@@ -213,6 +332,14 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Daniel Egger";
 				TargetAttributes = {
+					65E27146211CE16100A90FC1 = {
+						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
+					};
+					65E2714E211CE16100A90FC1 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 65FE6F60211640C1009BECBD;
+					};
 					65FE6F60211640C1009BECBD = {
 						CreatedOnToolsVersion = 9.4.1;
 					};
@@ -237,11 +364,27 @@
 			targets = (
 				65FE6F60211640C1009BECBD /* Fokus */,
 				65FE6F78211646A7009BECBD /* WindowLayout */,
+				65E27146211CE16100A90FC1 /* DotfileParser */,
+				65E2714E211CE16100A90FC1 /* DotfileParserTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		65E27145211CE16100A90FC1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65E2714D211CE16100A90FC1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		65FE6F5F211640C1009BECBD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -261,6 +404,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		65E27142211CE16100A90FC1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65E27165211CE17C00A90FC1 /* Lexer.swift in Sources */,
+				65E27167211CE9EA00A90FC1 /* Dotfile.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65E2714B211CE16100A90FC1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65E27157211CE16100A90FC1 /* DotfileParserTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		65FE6F5D211640C1009BECBD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -288,6 +448,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		65E27152211CE16100A90FC1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 65E27146211CE16100A90FC1 /* DotfileParser */;
+			targetProxy = 65E27151211CE16100A90FC1 /* PBXContainerItemProxy */;
+		};
+		65E27154211CE16100A90FC1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 65FE6F60211640C1009BECBD /* Fokus */;
+			targetProxy = 65E27153211CE16100A90FC1 /* PBXContainerItemProxy */;
+		};
+		65E2715B211CE16200A90FC1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 65E27146211CE16100A90FC1 /* DotfileParser */;
+			targetProxy = 65E2715A211CE16200A90FC1 /* PBXContainerItemProxy */;
+		};
 		65FE6F8D211646A8009BECBD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 65FE6F78211646A7009BECBD /* WindowLayout */;
@@ -307,6 +482,107 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		65E2715F211CE16200A90FC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 3JMWW3SW7U;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = DotfileParser/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dnlggr.DotfileParser;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		65E27160211CE16200A90FC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 3JMWW3SW7U;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = DotfileParser/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dnlggr.DotfileParser;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		65E27162211CE16200A90FC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3JMWW3SW7U;
+				INFOPLIST_FILE = DotfileParserTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dnlggr.DotfileParserTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fokus.app/Contents/MacOS/Fokus";
+			};
+			name = Debug;
+		};
+		65E27163211CE16200A90FC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3JMWW3SW7U;
+				INFOPLIST_FILE = DotfileParserTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dnlggr.DotfileParserTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fokus.app/Contents/MacOS/Fokus";
+			};
+			name = Release;
+		};
 		65FE6F6D211640C2009BECBD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -536,6 +812,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		65E2715E211CE16200A90FC1 /* Build configuration list for PBXNativeTarget "DotfileParser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65E2715F211CE16200A90FC1 /* Debug */,
+				65E27160211CE16200A90FC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		65E27161211CE16200A90FC1 /* Build configuration list for PBXNativeTarget "DotfileParserTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65E27162211CE16200A90FC1 /* Debug */,
+				65E27163211CE16200A90FC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		65FE6F5C211640C1009BECBD /* Build configuration list for PBXProject "Fokus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

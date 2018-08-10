@@ -9,6 +9,7 @@
 import Cocoa
 import HotKey
 import WindowLayout
+import DotfileParser
 
 class FokusController: NSObject {
     
@@ -29,6 +30,10 @@ class FokusController: NSObject {
         setupMenu()
 
         registerHotKeys()
+        
+        //
+        
+        Dotfile().lex()
     }
     
     func setupIcon() {
