@@ -8,63 +8,89 @@
 
 import Foundation
 
-class Lexer {
-    typealias TokenGenerator = (String) -> Token?
-    
-    enum Token: String {
-        case set = "set"
-        case bind = "bind"
-        case modifier = "mod"
-        case plus = "+"
-        case modifierKey = "[a-z]"
-    }
-    
-    let tokens: [(String, TokenGenerator)] = [
-        ("[ \t\n]", { _ in nil }),
-        ("#.*", { _ in nil }),
-        (Token.set.rawValue, { _ in .set }),
-        (Token.bind.rawValue, { _ in .bind }),
-        (Token.modifier.rawValue, { _ in .modifier }),
-        (Token.plus.rawValue, { _ in .plus }),
-        (Token.modifierKey.rawValue, {_ in .modifierKey })
-    ]
-    
-    func tokenize(_ dotfile: String) -> [Token] {
-        var foundTokens: [Token] = []
-        var input = dotfile
-        
-        while input.count > 0 {
-            var didMatch = false
-            
-            for (pattern, generateToken) in tokens {
-                if let match = input.match(pattern) {
-                    if let token = generateToken(match) {
-                        foundTokens.append(token)
-                    }
-                    
-                    input = String(input[input.index(input.startIndex, offsetBy: match.count)...])
-                    didMatch = true
-                    break
-                }
-            }
-            
-            if !didMatch {
-                input = String(input[input.index(after: input.startIndex)...])
-            }
-        }
-        
-        return foundTokens
+public enum LexerError: Error {
+    case invalidPattern(pattern: String)
+}
+
+public enum Token {
+    case bind, plus, fokus_left, fokus_down, fokus_up, fokus_right
+    case modifier(String)
+    case key(Character)
+
+    fileprivate typealias TokenGenerator = (String) -> Token?
+
+    fileprivate static var generators: [(pattern: String, token: TokenGenerator)] {
+        return [
+            ("[ \t\n]*", { _ in nil }),
+            ("#.*", { _ in nil }),
+            ("bind", { _ in .bind }),
+            ("\\+", { _ in .plus }),
+            ("fokus_left", { _ in .fokus_left }),
+            ("fokus_down", { _ in .fokus_down }),
+            ("fokus_up", { _ in .fokus_up }),
+            ("fokus_right", { _ in .fokus_right }),
+            ("[a-z]{2,}", { lexeme in .modifier(lexeme) }),
+            ("[a-zA-Z0-9]", { lexeme in .key(Character(lexeme)) })
+        ]
     }
 }
 
-extension String {
-    public func match(_ regex: String) -> String? {
-        let expression = try! NSRegularExpression(pattern: "^\(regex)", options: [])
-        let range = expression.rangeOfFirstMatch(in: self, options: [], range: NSMakeRange(0, self.utf8.count))
-        if range.location != NSNotFound {
-            return (self as NSString).substring(with: range)
+public class Lexer {
+    private let source: String
+    private var index: String.Index
+
+    public init(source: String) {
+        self.source = source
+        index = source.startIndex
+    }
+
+    private func token() -> Token? {
+        while index != source.endIndex {
+            var matched = false
+
+            for (pattern, generator) in Token.generators {
+                guard let lexeme = source.match(for: pattern, at: index) else {
+                    continue
+                }
+
+                matched = true
+                index = source.index(index, offsetBy: lexeme.count)
+
+                guard let token = generator(lexeme) else {
+                    continue
+                }
+
+                return token
+            }
+
+            if !matched {
+                index = source.index(after: index)
+            }
         }
-        
+
         return nil
+    }
+
+    public func tokens() -> [Token] {
+        var tokens: [Token] = []
+
+        while let token = token() {
+            tokens.append(token)
+        }
+
+        return tokens
+    }
+
+}
+
+fileprivate extension String {
+    func match(for pattern: String, at index: String.Index) -> String? {
+        guard let regex = try? NSRegularExpression(pattern: "^\(pattern)", options: []) else {
+            return nil
+        }
+
+        let range = regex.rangeOfFirstMatch(in: self, options: [], range: NSRange(index..<endIndex, in: self))
+
+        return range.location != NSNotFound ? (self as NSString).substring(with: range) : nil
     }
 }

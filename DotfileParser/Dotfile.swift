@@ -13,12 +13,7 @@ public class Dotfile {
     
     public init() { }
     
-    public func lex() {
-        let tokens = Lexer().tokenize(read())
-        print(tokens)
-    }
-    
-    private func read() -> String {
+    public func read() -> String {
         let home = FileManager.default.homeDirectoryForCurrentUser
         
         guard let dotfile = try? String(contentsOf: home.appendingPathComponent(filename)) else {

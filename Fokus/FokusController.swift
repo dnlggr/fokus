@@ -33,7 +33,8 @@ class FokusController: NSObject {
         
         //
         
-        Dotfile().lex()
+        let tokens = Lexer(source: Dotfile().read()).tokens()
+        print(tokens)
     }
     
     func setupIcon() {
