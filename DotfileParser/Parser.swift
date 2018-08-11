@@ -8,16 +8,26 @@
 
 import Foundation
 
-enum ParserError: Error {
+public enum ParserError: Error {
     case unexpectedEOF
     case unexpected(token: Token)
-    case unexpectedToken(seen: Token, expected: Token)
 }
 
-struct KeyBinding {
-    let modifier: String
-    let key: Character
-    let action: String
+public struct KeyBinding {
+    public let modifiers: [Modifier]
+    public let key: String
+    public let action: Action
+}
+
+indirect public enum Modifier {
+    case modifier(String)
+}
+
+public enum Action: String {
+    case focus_left = "Focus Left"
+    case focus_down = "Focus Down"
+    case focus_up = "Focus Up"
+    case focus_right = "Focus Right"
 }
 
 public class Parser {
@@ -33,6 +43,16 @@ public class Parser {
         advance()
     }
 
+    public func keyBindings() throws -> [KeyBinding] {
+        var keyBindings: [KeyBinding] = []
+
+        while tokensLeft {
+            keyBindings.append(try parseKeyBinding())
+        }
+
+        return keyBindings
+    }
+
     func advance() {
         currentToken = lexer.token()
     }
@@ -43,33 +63,37 @@ public class Parser {
         }
 
         guard token == currentToken else {
-            throw ParserError.unexpectedToken(seen: currentToken, expected: token)
+            throw ParserError.unexpected(token: currentToken)
         }
 
         advance()
     }
 
-    func parseModifier() throws -> String {
+    func parseModifier() throws -> Modifier? {
         guard let token = currentToken else {
             throw ParserError.unexpectedEOF
         }
 
-        guard case .modifier(let modifier) = token else {
-            throw ParserError.unexpectedToken(seen: token, expected: .modifier(""))
+        if case .key = token {
+            return nil
+        }
+
+        guard case .modifier(let value) = token else {
+            throw ParserError.unexpected(token: token)
         }
 
         advance()
 
-        return modifier
+        return .modifier(value)
     }
 
-    func parseKey() throws -> Character {
+    func parseKey() throws -> String {
         guard let token = currentToken else {
             throw ParserError.unexpectedEOF
         }
 
         guard case .key(let key) = token else {
-            throw ParserError.unexpectedToken(seen: token, expected: .key(Character("")))
+            throw ParserError.unexpected(token: token)
         }
 
         advance()
@@ -77,22 +101,22 @@ public class Parser {
         return key
     }
 
-    func parseAction() throws -> String {
+    func parseAction() throws -> Action {
         guard let token = currentToken else {
             throw ParserError.unexpectedEOF
         }
 
-        var action = ""
+        var action: Action
 
         switch token {
         case .fokus_left:
-            action = "fokus_left"
+            action = .focus_left
         case .fokus_down:
-            action = "fokus_down"
+            action = .focus_down
         case .fokus_up:
-            action = "fokus_up"
+            action = .focus_up
         case .fokus_right:
-            action = "fokus_right"
+            action = .focus_right
         default:
             throw ParserError.unexpected(token: token)
         }
@@ -104,21 +128,17 @@ public class Parser {
 
     func parseKeyBinding() throws -> KeyBinding {
         try consume(.bind)
-        let modifier = try parseModifier()
-        try consume(.plus)
-        let key = try parseKey()
-        let action = try parseAction()
 
-        return KeyBinding(modifier: modifier, key: key, action: action)
-    }
-
-    public func test() {
-        var keyBindings: [KeyBinding] = []
-
-        while tokensLeft {
-            keyBindings.append(try! parseKeyBinding())
+        var modifiers: [Modifier] = []
+        while let modifier = try parseModifier() {
+            modifiers.append(modifier)
+            try consume(.plus)
         }
 
-        print(keyBindings)
+        let key = try parseKey()
+
+        let action = try parseAction()
+
+        return KeyBinding(modifiers: modifiers, key: key, action: action)
     }
 }

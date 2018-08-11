@@ -22,7 +22,7 @@ fileprivate extension Token {
             ("fokus_up", { _ in .fokus_up }),
             ("fokus_right", { _ in .fokus_right }),
             ("[a-z]{2,}", { lexeme in .modifier(lexeme) }),
-            ("[a-zA-Z0-9]", { lexeme in .key(Character(lexeme)) })
+            ("[a-zA-Z0-9]", { lexeme in .key(lexeme) })
         ]
     }
 }

@@ -9,9 +9,11 @@
 import Foundation
 
 public class Dotfile {
+    public static let shared = Dotfile()
+
     private var filename = ".fokus"
     
-    public init() { }
+    private init() { }
     
     public func read() -> String {
         let home = FileManager.default.homeDirectoryForCurrentUser

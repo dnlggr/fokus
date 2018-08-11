@@ -8,14 +8,14 @@
 
 import Foundation
 
-enum Token {
+public enum Token {
     case bind, plus, fokus_left, fokus_down, fokus_up, fokus_right
     case modifier(String)
-    case key(Character)
+    case key(String)
 }
 
 extension Token: Equatable {
-    static func ==(lhs: Token, rhs: Token) -> Bool {
+    public static func ==(lhs: Token, rhs: Token) -> Bool {
         switch (lhs, rhs) {
         case (.bind, .bind), (.plus, .plus), (.fokus_left, .fokus_left), (.fokus_down, .fokus_down),
              (.fokus_up, .fokus_up), (.fokus_right, .fokus_right):
