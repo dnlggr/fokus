@@ -8,10 +8,6 @@
 
 import Foundation
 
-public enum LexerError: Error {
-    case invalidPattern(pattern: String)
-}
-
 public enum Token {
     case bind, plus, fokus_left, fokus_down, fokus_up, fokus_right
     case modifier(String)
