@@ -8,14 +8,10 @@
 
 import Foundation
 
-public enum Token {
-    case bind, plus, fokus_left, fokus_down, fokus_up, fokus_right
-    case modifier(String)
-    case key(Character)
+fileprivate extension Token {
+    typealias TokenGenerator = (String) -> Token?
 
-    fileprivate typealias TokenGenerator = (String) -> Token?
-
-    fileprivate static var generators: [(pattern: String, token: TokenGenerator)] {
+    static var generators: [(pattern: String, token: TokenGenerator)] {
         return [
             ("[ \t\n]*", { _ in nil }),
             ("#.*", { _ in nil }),
@@ -31,16 +27,16 @@ public enum Token {
     }
 }
 
-public class Lexer {
+class Lexer {
     private let source: String
     private var index: String.Index
 
-    public init(source: String) {
+    init(source: String) {
         self.source = source
         index = source.startIndex
     }
 
-    private func token() -> Token? {
+    func token() -> Token? {
         while index != source.endIndex {
             var matched = false
 
@@ -67,7 +63,7 @@ public class Lexer {
         return nil
     }
 
-    public func tokens() -> [Token] {
+    func tokens() -> [Token] {
         var tokens: [Token] = []
 
         while let token = token() {
@@ -76,7 +72,6 @@ public class Lexer {
 
         return tokens
     }
-
 }
 
 fileprivate extension String {
