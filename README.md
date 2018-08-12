@@ -1,6 +1,6 @@
 # Fokus
 
-Simple window switcher for macOS.
+A simple window switcher for tiled windows in macOS.
 
 ## Installation
 
