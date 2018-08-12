@@ -11,18 +11,18 @@ import Foundation
 fileprivate extension Token {
     typealias TokenGenerator = (String) -> Token?
 
-    static var generators: [(pattern: String, token: TokenGenerator)] {
+    static var patterns: [(pattern: String, token: TokenGenerator)] {
         return [
             ("[ \t\n]*", { _ in nil }),
             ("#.*", { _ in nil }),
             ("bind", { _ in .bind }),
             ("\\+", { _ in .plus }),
-            ("fokus_left", { _ in .fokus_left }),
-            ("fokus_down", { _ in .fokus_down }),
-            ("fokus_up", { _ in .fokus_up }),
-            ("fokus_right", { _ in .fokus_right }),
-            ("[a-z]{2,}", { lexeme in .modifier(lexeme) }),
-            ("[a-zA-Z0-9]", { lexeme in .key(lexeme) })
+            ("focus_left", { _ in .focus_left }),
+            ("focus_down", { _ in .focus_down }),
+            ("focus_up", { _ in .focus_up }),
+            ("focus_right", { _ in .focus_right }),
+            ("[a-z]{2,}", { .modifier($0) }),
+            ("[a-zA-Z0-9]", { .key($0) })
         ]
     }
 }
@@ -40,13 +40,13 @@ class Lexer {
         while index != source.endIndex {
             var matched = false
 
-            for (pattern, generator) in Token.generators {
+            for (pattern, generator) in Token.patterns {
                 guard let lexeme = source.match(for: pattern, at: index) else {
                     continue
                 }
 
                 matched = true
-                index = source.index(index, offsetBy: lexeme.count)
+                advanceIndex(by: lexeme.count)
 
                 guard let token = generator(lexeme) else {
                     continue
@@ -56,7 +56,7 @@ class Lexer {
             }
 
             if !matched {
-                index = source.index(after: index)
+                advanceIndex()
             }
         }
 
@@ -71,6 +71,10 @@ class Lexer {
         }
 
         return tokens
+    }
+
+    private func advanceIndex(by offset: Int = 1) {
+        index = source.index(index, offsetBy: offset)
     }
 }
 

@@ -109,13 +109,13 @@ public class Parser {
         var action: Action
 
         switch token {
-        case .fokus_left:
+        case .focus_left:
             action = .focus_left
-        case .fokus_down:
+        case .focus_down:
             action = .focus_down
-        case .fokus_up:
+        case .focus_up:
             action = .focus_up
-        case .fokus_right:
+        case .focus_right:
             action = .focus_right
         default:
             throw ParserError.unexpected(token: token)
