@@ -1,10 +1,10 @@
-# Fokus
+# Fokus :left_right_arrow: :arrow_up_down:
 
 A simple window switcher for tiled windows in macOS.
 
 ## Installation
 
-No yet setup.
+Not yet setup.
 
 Currently, you have to download the project and build the app in Xcode to try it out. Make sure to run `carthage update` before building.
 
@@ -12,7 +12,7 @@ Make sure to grant accessibility access to Xcode in the Security & Privacy prefe
 
 ## Configuration
 
-Shortcuts can be configured via a dotfile at `~/.fokus` which is read at app startup.
+Hotkeys can be configured via a dotfile at `~/.fokus` which is read at app startup.
 
 ### Example
 
