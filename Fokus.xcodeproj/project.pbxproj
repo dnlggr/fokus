@@ -149,12 +149,12 @@
 		65FE6F58211640C1009BECBD = {
 			isa = PBXGroup;
 			children = (
-				65FE6FA121164A62009BECBD /* HotKey.framework.dSYM */,
-				65FE6F9D21164A35009BECBD /* HotKey.framework */,
 				65FE6F63211640C1009BECBD /* Fokus */,
 				65FE6F7A211646A7009BECBD /* WindowLayout */,
 				65E27148211CE16100A90FC1 /* DotfileParser */,
 				65FE6F62211640C1009BECBD /* Products */,
+				65FE6F9D21164A35009BECBD /* HotKey.framework */,
+				65FE6FA121164A62009BECBD /* HotKey.framework.dSYM */,
 			);
 			sourceTree = "<group>";
 		};
