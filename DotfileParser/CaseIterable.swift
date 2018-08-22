@@ -5,6 +5,8 @@
 //  Created by Daniel on 11.08.18.
 //  Copyright © 2018 Daniel Egger. All rights reserved.
 //
+// See: https://stackoverflow.com/a/49588446
+//
 
 import Foundation
 
