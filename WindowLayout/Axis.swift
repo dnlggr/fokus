@@ -6,8 +6,6 @@
 //  Copyright © 2018 Daniel Egger. All rights reserved.
 //
 
-import Foundation
-
 enum Axis {
     case horizontal
     case vertical

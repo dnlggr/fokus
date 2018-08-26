@@ -24,7 +24,7 @@ extension CGPoint {
 }
 
 extension CGRect {
-    func overlap(_ other: CGRect, collapsing axis: Axis) -> Bool {
+    func overlaps(with other: CGRect, collapsing axis: Axis) -> Bool {
         switch axis {
         case .horizontal:
             return self.minY < other.maxY && other.minY < self.maxY
