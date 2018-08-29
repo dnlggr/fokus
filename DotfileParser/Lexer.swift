@@ -9,12 +9,10 @@
 import Foundation
 
 fileprivate extension Token {
-    typealias TokenGenerator = (String) -> Token?
+    typealias TokenGenerator = (String) -> Token
 
     static var patterns: [(pattern: String, token: TokenGenerator)] {
         return [
-            ("[ \t\n]*", { _ in nil }),
-            ("#.*", { _ in nil }),
             ("bind", { _ in .bind }),
             ("\\+", { _ in .plus }),
             ("focus_left", { _ in .focus_left }),
@@ -32,32 +30,23 @@ class Lexer {
     private var index: String.Index
 
     init(source: String) {
-        self.source = source
+        self.source = source.removingMatches(for: [ "#.*", "[ \t\n]*" ])
         index = source.startIndex
     }
 
     func token() -> Token? {
         while index != source.endIndex {
-            var matched = false
-
             for (pattern, generator) in Token.patterns {
                 guard let lexeme = source.match(for: pattern, at: index) else {
                     continue
                 }
 
-                matched = true
                 advanceIndex(by: lexeme.count)
 
-                guard let token = generator(lexeme) else {
-                    continue
-                }
-
-                return token
+                return generator(lexeme)
             }
 
-            if !matched {
-                advanceIndex()
-            }
+            advanceIndex()
         }
 
         return nil
@@ -87,5 +76,19 @@ fileprivate extension String {
         let range = regex.rangeOfFirstMatch(in: self, options: [], range: NSRange(index..<endIndex, in: self))
 
         return range.location != NSNotFound ? (self as NSString).substring(with: range) : nil
+    }
+
+    func removingMatch(for pattern: String) -> String {
+        guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else {
+            return self
+        }
+
+        let range = NSRange(startIndex..<endIndex, in: self)
+
+        return regex.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: "")
+    }
+
+    func removingMatches(for patterns: [String]) -> String {
+        return patterns.reduce(self) { $0.removingMatch(for: $1) }
     }
 }
