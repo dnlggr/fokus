@@ -46,11 +46,35 @@ class ParserTests: XCTestCase {
     }
 
     func testParsingMissingPlus() {
-//        dotfile = dotfile.replacingOccurrences(of: "+", with: "")
-//
-//        XCTAssertThrowsError(try Parser(source: dotfile).keyBindings()) {
-//            XCTAssertEqual($0 as! ParserError, ParserError.unexpected(token: .plus))
-//        }
+        dotfile = dotfile.replacingOccurrences(of: "+", with: "")
+
+        XCTAssertThrowsError(try Parser(source: dotfile).keyBindings()) {
+            XCTAssertEqual($0 as! ParserError, ParserError.unexpected(token: "control"))
+        }
+    }
+
+    func testParsingMissingKey() {
+        dotfile = dotfile.replacingOccurrences(of: "j", with: "")
+
+        XCTAssertThrowsError(try Parser(source: dotfile).keyBindings()) {
+            XCTAssertEqual($0 as! ParserError, ParserError.unexpected(token: "focus_down"))
+        }
+    }
+
+    func testParsingMissingAction() {
+        dotfile = dotfile.replacingOccurrences(of: "focus_up", with: "")
+
+        XCTAssertThrowsError(try Parser(source: dotfile).keyBindings()) {
+            XCTAssertEqual($0 as! ParserError, ParserError.unexpected(token: "bind"))
+        }
+    }
+
+    func testParsingWrongOrder() {
+        dotfile = "focus_right command+control+l bind"
+
+        XCTAssertThrowsError(try Parser(source: dotfile).keyBindings()) {
+            XCTAssertEqual($0 as! ParserError, ParserError.unexpected(token: "focus_right"))
+        }
     }
 }
 
