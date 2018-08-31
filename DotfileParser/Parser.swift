@@ -54,7 +54,7 @@ public class Parser {
     }
 
     func advance() {
-        currentToken = lexer.token()
+        currentToken = try! lexer.nextToken()
     }
 
     func consume(_ token: Token) throws {
@@ -84,7 +84,7 @@ public class Parser {
 
         advance()
 
-        return .modifier(value)
+        return .modifier(value.rawValue)
     }
 
     func parseKey() throws -> String {

@@ -1,0 +1,17 @@
+# ~/.fokus
+#
+# Configuration for the Fokus window switcher.
+# ------------------------------------------------------------------------------
+#
+# <line> ::= <key binding> | <comment>
+#
+# <key binding> ::= "bind"  <modifier combination> "+" key <action>
+# <modifier combination> ::= modifier "+" <modifier combination> | modifier
+# <action> ::= "fokus_left" | "fokus_right" | "fokus_up" | "fokus_right"
+#
+# <comment> ::= "#" string
+
+bind command+control+h focus_left
+bind command+control+j focus_down
+bind command+control+k focus_up
+bind command+control+l focus_right
