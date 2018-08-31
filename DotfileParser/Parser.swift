@@ -16,10 +16,6 @@ public enum ParserError: Error {
 public class Parser {
     private var tokens: [Token]
 
-    private var currentToken: Token? {
-        return tokens.first
-    }
-
     // MARK: Initialization
 
     public init(source: String) throws {
@@ -62,19 +58,15 @@ public class Parser {
     }
 
     func parseModifier() throws -> Modifier? {
-        if case .some(.key) = peek() {
+        if case .some(.key) = peekToken() {
             return nil
         }
 
-        guard let token = currentToken else {
-            throw ParserError.unexpectedEOF
-        }
+        let token = try popToken()
 
         guard case .modifier(let value) = token else {
             throw ParserError.unexpected(token: token)
         }
-
-        advance()
 
         switch value {
         case .command:
@@ -89,63 +81,53 @@ public class Parser {
     }
 
     func parseKey() throws -> String {
-        guard let token = currentToken else {
-            throw ParserError.unexpectedEOF
-        }
+        let token = try popToken()
 
         guard case .key(let key) = token else {
             throw ParserError.unexpected(token: token)
         }
 
-        advance()
-
         return key
     }
 
     func parseAction() throws -> Action {
-        guard let token = currentToken else {
-            throw ParserError.unexpectedEOF
-        }
-
-        var action: Action
+        let token = try popToken()
 
         switch token {
         case .focus_left:
-            action = .focus_left
+            return .focus_left
         case .focus_down:
-            action = .focus_down
+            return .focus_down
         case .focus_up:
-            action = .focus_up
+            return .focus_up
         case .focus_right:
-            action = .focus_right
+            return .focus_right
         default:
             throw ParserError.unexpected(token: token)
         }
-
-        advance()
-
-        return action
     }
 
     // MARK: Private Functions
 
-    private func advance() {
-        tokens = Array(tokens.dropFirst())
-    }
-
-    private func peek() -> Token? {
+    private func peekToken() -> Token? {
         return tokens.first
     }
 
-    private func consume(_ token: Token) throws {
-        guard let currentToken = currentToken else {
+    private func popToken() throws -> Token {
+        guard let token = tokens.first else {
             throw ParserError.unexpectedEOF
         }
 
-        guard token == currentToken else {
-            throw ParserError.unexpected(token: currentToken)
-        }
+        tokens = Array(tokens.dropFirst())
 
-        advance()
+        return token
+    }
+
+    private func consume(_ token: Token) throws {
+        let seenToken = try popToken()
+
+        guard token == seenToken else {
+            throw ParserError.unexpected(token: seenToken)
+        }
     }
 }
