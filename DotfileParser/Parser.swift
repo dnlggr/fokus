@@ -43,26 +43,31 @@ public class Parser {
     func parseKeyBinding() throws -> KeyBinding {
         try consume(.bind)
 
+        return KeyBinding(
+            modifiers: try parseModifiers(),
+            key: try parseKey(),
+            action: try parseAction()
+        )
+    }
+
+    func parseModifiers() throws -> [Modifier] {
         var modifiers: [Modifier] = []
+
         while let modifier = try parseModifier() {
             modifiers.append(modifier)
             try consume(.plus)
         }
 
-        let key = try parseKey()
-
-        let action = try parseAction()
-
-        return KeyBinding(modifiers: modifiers, key: key, action: action)
+        return modifiers
     }
 
     func parseModifier() throws -> Modifier? {
-        guard let token = currentToken else {
-            throw ParserError.unexpectedEOF
+        if case .some(.key) = peek() {
+            return nil
         }
 
-        if case .key = token {
-            return nil
+        guard let token = currentToken else {
+            throw ParserError.unexpectedEOF
         }
 
         guard case .modifier(let value) = token else {
@@ -126,6 +131,10 @@ public class Parser {
 
     private func advance() {
         tokens = Array(tokens.dropFirst())
+    }
+
+    private func peek() -> Token? {
+        return tokens.first
     }
 
     private func consume(_ token: Token) throws {
