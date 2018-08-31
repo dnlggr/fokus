@@ -42,7 +42,7 @@ class FokusController: NSObject {
     }
 
     func readDotfile() {
-        guard let keyBindings = try? Parser(source: Dotfile.shared.read()).keyBindings() else {
+        guard let dotfile = Dotfile.shared.read(), let keyBindings = try? Parser(source: dotfile).keyBindings() else {
             print("Could not parse dotfile.")
             return
         }

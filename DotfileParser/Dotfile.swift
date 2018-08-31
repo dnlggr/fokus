@@ -15,13 +15,9 @@ public class Dotfile {
     
     private init() { }
     
-    public func read() -> String {
+    public func read() -> String? {
         let home = FileManager.default.homeDirectoryForCurrentUser
         
-        guard let dotfile = try? String(contentsOf: home.appendingPathComponent(filename)) else {
-            return ""
-        }
-        
-        return dotfile
+        return try? String(contentsOf: home.appendingPathComponent(filename))
     }
 }
