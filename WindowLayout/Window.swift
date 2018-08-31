@@ -11,15 +11,21 @@ import Foundation
 public struct Window {
     public let bounds: CGRect
     public let title: String?
+
+    // MARK: Initialization
     
     public init(bounds: CGRect, title: String? = nil) {
         self.bounds = bounds
         self.title = title
     }
 
+    // MARK: API
+
     func nearest(from windows: [Window], on axis: Axis) -> Window? {
         return windows.sorted(by: { $0.distance(to: self, on: axis) < $1.distance(to: self, on: axis) }).first
     }
+
+    // MARK: Private Functions
 
     private func distance(to window: Window, on axis: Axis) -> CGFloat {
         switch axis {

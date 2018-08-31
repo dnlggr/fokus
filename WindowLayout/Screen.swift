@@ -8,11 +8,14 @@
 
 public struct Screen {
     let windows: [Window]
+
+    // MARK: Initialization
     
     public init(windows: [Window]) {
         self.windows = windows
     }
 
+    //  MARK: API
 
     /// For the specified window, finds the neighboring window, if any, from the windows on the screen.
     /// The search for a neighbor will only be directed toward the specified direction.
@@ -25,6 +28,8 @@ public struct Screen {
     public func neighbor(of window: Window, toward direction: Direction) -> Window? {
         return window.nearest(from: neighborhood(of: window, toward: direction), on: direction.axis.opposite)
     }
+
+    // MARK: Private Functions
     
     private func neighborhood(of window: Window, toward direction: Direction) -> [Window] {
         return windows.filter {
