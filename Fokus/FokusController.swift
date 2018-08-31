@@ -57,25 +57,25 @@ class FokusController: NSObject {
             switch binding.action {
             case .focus_left:
                 return (NSMenuItem(
-                    title: binding.action.rawValue,
+                    title: "Focus Left",
                     action: #selector(FokusController.moveFocusWest),
                     keyEquivalent: binding.key
                 ), binding)
             case .focus_down:
                 return (NSMenuItem(
-                    title: binding.action.rawValue,
+                    title: "Focus Down",
                     action: #selector(FokusController.moveFocusSouth),
                     keyEquivalent: binding.key
                 ), binding)
             case .focus_up:
                 return (NSMenuItem(
-                    title: binding.action.rawValue,
+                    title: "Focus Up",
                     action: #selector(FokusController.moveFocusNorth),
                     keyEquivalent: binding.key
                 ), binding)
             case .focus_right:
                 return (NSMenuItem(
-                    title: binding.action.rawValue,
+                    title: "Focus Right",
                     action: #selector(FokusController.moveFocusEast),
                     keyEquivalent: binding.key
                 ), binding)
@@ -86,11 +86,7 @@ class FokusController: NSObject {
             $0.item.target = self
 
             var modifiers: NSEvent.ModifierFlags = []
-            $0.binding.modifiers.forEach {
-                if let modifier = try? $0.modiferFlag() {
-                    modifiers.insert(modifier)
-                }
-            }
+            $0.binding.modifiers.forEach { modifiers.insert($0.modiferFlag()) }
 
             $0.item.keyEquivalentModifierMask = modifiers
 
@@ -115,11 +111,7 @@ class FokusController: NSObject {
     func registerHotKeys() {
         keyBindings?.forEach {
             var modifiers: NSEvent.ModifierFlags = []
-            $0.modifiers.forEach {
-                if let modifier = try? $0.modiferFlag() {
-                    modifiers.insert(modifier)
-                }
-            }
+            $0.modifiers.forEach { modifiers.insert($0.modiferFlag()) }
 
             let key = Key(string: $0.key)!
 
@@ -204,26 +196,16 @@ fileprivate extension Modifier {
         case unsupportedModifier(String)
     }
 
-    func modiferFlag() throws -> NSEvent.ModifierFlags {
-        if case .modifier(let value) = self, value == "control" {
-            return .control
-        }
-
-        if case .modifier(let value) = self, value == "command" {
-            return .command
-        }
-
-        if case .modifier(let value) = self, value == "shift" {
-            return .shift
-        }
-
-        if case .modifier(let value) = self, value == "option" {
-            return .option
-        }
-
+    func modiferFlag() -> NSEvent.ModifierFlags {
         switch self {
-        case .modifier(let value):
-            throw ModifierError.unsupportedModifier(value)
+        case .command:
+            return .command
+        case .control:
+            return .control
+        case .option:
+            return .option
+        case .shift:
+            return .shift
         }
     }
 }

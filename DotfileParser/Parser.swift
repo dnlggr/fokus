@@ -13,60 +13,47 @@ public enum ParserError: Error {
     case unexpected(token: Token)
 }
 
-public struct KeyBinding {
-    public let modifiers: [Modifier]
-    public let key: String
-    public let action: Action
-}
-
-indirect public enum Modifier {
-    case modifier(String)
-}
-
-public enum Action: String {
-    case focus_left = "Focus Left"
-    case focus_down = "Focus Down"
-    case focus_up = "Focus Up"
-    case focus_right = "Focus Right"
-}
-
 public class Parser {
-    let lexer: Lexer
-    var currentToken: Token?
+    private var tokens: [Token]
 
-    var tokensLeft: Bool {
-        return currentToken != nil
+    private var currentToken: Token? {
+        return tokens.first
     }
 
-    public init(source: String) {
-        lexer = Lexer(source: source)
-        advance()
+    // MARK: Initialization
+
+    public init(source: String) throws {
+        tokens = try Lexer(source: source).tokens()
     }
+
+    // MARK: API
 
     public func keyBindings() throws -> [KeyBinding] {
         var keyBindings: [KeyBinding] = []
 
-        while tokensLeft {
+        while !tokens.isEmpty {
             keyBindings.append(try parseKeyBinding())
         }
 
         return keyBindings
     }
 
-    func advance() {
-        currentToken = try! lexer.nextToken()
-    }
+    // MARK: Parsing
 
-    func consume(_ token: Token) throws {
-        guard let currentToken = currentToken else {
-            throw ParserError.unexpectedEOF
+    func parseKeyBinding() throws -> KeyBinding {
+        try consume(.bind)
+
+        var modifiers: [Modifier] = []
+        while let modifier = try parseModifier() {
+            modifiers.append(modifier)
+            try consume(.plus)
         }
 
-        guard token == currentToken else {
-            throw ParserError.unexpected(token: currentToken)
-        }
+        let key = try parseKey()
 
-        advance()
+        let action = try parseAction()
+
+        return KeyBinding(modifiers: modifiers, key: key, action: action)
     }
 
     func parseModifier() throws -> Modifier? {
@@ -84,7 +71,16 @@ public class Parser {
 
         advance()
 
-        return .modifier(value.rawValue)
+        switch value {
+        case .command:
+            return .command
+        case .control:
+            return .control
+        case .option:
+            return .option
+        case .shift:
+            return .shift
+        }
     }
 
     func parseKey() throws -> String {
@@ -126,19 +122,21 @@ public class Parser {
         return action
     }
 
-    func parseKeyBinding() throws -> KeyBinding {
-        try consume(.bind)
+    // MARK: Private Functions
 
-        var modifiers: [Modifier] = []
-        while let modifier = try parseModifier() {
-            modifiers.append(modifier)
-            try consume(.plus)
+    private func advance() {
+        tokens = Array(tokens.dropFirst())
+    }
+
+    private func consume(_ token: Token) throws {
+        guard let currentToken = currentToken else {
+            throw ParserError.unexpectedEOF
         }
 
-        let key = try parseKey()
+        guard token == currentToken else {
+            throw ParserError.unexpected(token: currentToken)
+        }
 
-        let action = try parseAction()
-
-        return KeyBinding(modifiers: modifiers, key: key, action: action)
+        advance()
     }
 }

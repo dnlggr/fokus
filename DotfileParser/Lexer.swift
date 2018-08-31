@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum LexerError: Error {
+public enum LexerError: Error {
     case unexpected(character: Character)
 }
 

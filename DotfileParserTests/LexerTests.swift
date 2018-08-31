@@ -17,7 +17,7 @@ class LexerTests: XCTestCase {
         dotfile = try! String(contentsOf: Bundle(for: type(of: self)).url(forResource: "dotfile", withExtension: nil)!)
     }
 
-    func testLexerScansCorrectDotfile() {
+    func testScanningCorrectDotfile() {
         let tokens = try! Lexer(source: dotfile).tokens()
 
         XCTAssertEqual(tokens, [

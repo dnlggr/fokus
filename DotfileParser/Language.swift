@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum KeyModifier: String, CaseIterable {
+public enum ModifierToken: String, CaseIterable {
     case command
     case control
     case option
@@ -22,7 +22,7 @@ public enum Token {
     case focus_down
     case focus_up
     case focus_right
-    case modifier(KeyModifier)
+    case modifier(ModifierToken)
     case key(String)
 
     static var comment: String {
@@ -59,8 +59,8 @@ public enum Token {
                 pattern: "focus_right",
                 withLexeme: { _ in .focus_right }),
             (
-                pattern:"(\(KeyModifier.allCases.map({ $0.rawValue }).joined(separator: "|")))",
-                withLexeme: { .modifier(KeyModifier(rawValue: $0)!) }
+                pattern:"(\(ModifierToken.allCases.map({ $0.rawValue }).joined(separator: "|")))",
+                withLexeme: { .modifier(ModifierToken(rawValue: $0)!) }
             ),
             (
                 pattern: "[a-zA-Z0-9]{1}",
