@@ -8,14 +8,14 @@
 
 import Foundation
 
-public enum ModifierToken: String, CaseIterable {
+enum ModifierToken: String, CaseIterable {
     case command
     case control
     case option
     case shift
 }
 
-public enum Token {
+enum Token {
     case bind
     case plus
     case focus_left
@@ -70,8 +70,31 @@ public enum Token {
     }
 }
 
+extension Token: CustomStringConvertible {
+    var description: String {
+        switch self {
+        case .bind:
+            return "bind"
+        case .plus:
+            return "+"
+        case .focus_up:
+            return "focus_up"
+        case .focus_down:
+            return "focus_down"
+        case .focus_left:
+            return "focus_left"
+        case .focus_right:
+            return "focus_right"
+        case .key(let value):
+            return value
+        case .modifier(let value):
+            return value.rawValue
+        }
+    }
+}
+
 extension Token: Equatable {
-    public static func ==(lhs: Token, rhs: Token) -> Bool {
+    static func ==(lhs: Token, rhs: Token) -> Bool {
         switch (lhs, rhs) {
         case (.bind, .bind),
              (.plus, .plus),

@@ -10,21 +10,21 @@ import Foundation
 
 public enum ParserError: Error {
     case unexpectedEOF
-    case unexpected(token: Token)
+    case unexpected(token: String)
 }
 
-public class Parser {
+class Parser {
     private var tokens: [Token]
 
     // MARK: Initialization
 
-    public init(source: String) throws {
+    init(source: String) throws {
         tokens = try Lexer(source: source).tokens()
     }
 
     // MARK: API
 
-    public func keyBindings() throws -> [KeyBinding] {
+    func keyBindings() throws -> [KeyBinding] {
         var keyBindings: [KeyBinding] = []
 
         while !tokens.isEmpty {
@@ -65,7 +65,7 @@ public class Parser {
         let token = try popToken()
 
         guard case .modifier(let value) = token else {
-            throw ParserError.unexpected(token: token)
+            throw ParserError.unexpected(token: token.description)
         }
 
         switch value {
@@ -84,7 +84,7 @@ public class Parser {
         let token = try popToken()
 
         guard case .key(let key) = token else {
-            throw ParserError.unexpected(token: token)
+            throw ParserError.unexpected(token: token.description)
         }
 
         return key
@@ -103,7 +103,7 @@ public class Parser {
         case .focus_right:
             return .focus_right
         default:
-            throw ParserError.unexpected(token: token)
+            throw ParserError.unexpected(token: token.description)
         }
     }
 
@@ -127,7 +127,7 @@ public class Parser {
         let seenToken = try popToken()
 
         guard token == seenToken else {
-            throw ParserError.unexpected(token: seenToken)
+            throw ParserError.unexpected(token: seenToken.description)
         }
     }
 }

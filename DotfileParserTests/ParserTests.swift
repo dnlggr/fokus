@@ -32,7 +32,7 @@ class ParserTests: XCTestCase {
         dotfile = dotfile.replacingOccurrences(of: "bind", with: "")
 
         XCTAssertThrowsError(try Parser(source: dotfile).keyBindings()) {
-            XCTAssertEqual($0 as! ParserError, ParserError.unexpected(token: .modifier(.command)))
+            XCTAssertEqual($0 as! ParserError, ParserError.unexpected(token: "command"))
         }
     }
 
@@ -41,7 +41,7 @@ class ParserTests: XCTestCase {
         dotfile = dotfile.replacingOccurrences(of: "control", with: "")
 
         XCTAssertThrowsError(try Parser(source: dotfile).keyBindings()) {
-            XCTAssertEqual($0 as! ParserError, ParserError.unexpected(token: .plus))
+            XCTAssertEqual($0 as! ParserError, ParserError.unexpected(token: "+"))
         }
     }
 

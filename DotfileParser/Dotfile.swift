@@ -8,14 +8,32 @@
 
 import Foundation
 
+public enum DotfileError: Error {
+    case couldNotReadDotfile
+}
+
 public class Dotfile {
     public static let shared = Dotfile()
 
     private var filename = ".fokus"
+
+    // MARK: Initialization
     
     private init() { }
+
+    // MARK: API
+
+    public func keyBindings() throws -> [KeyBinding] {
+        guard let dotfile = read() else {
+            throw DotfileError.couldNotReadDotfile
+        }
+
+        return try Parser(source: dotfile).keyBindings()
+    }
+
+    // MARK: Private Functions
     
-    public func read() -> String? {
+    private func read() -> String? {
         let home = FileManager.default.homeDirectoryForCurrentUser
         
         return try? String(contentsOf: home.appendingPathComponent(filename))

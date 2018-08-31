@@ -29,9 +29,7 @@ class FokusController: NSObject {
     
     override func awakeFromNib() {
         setupIcon()
-        readDotfile()
-        setupMenu()
-        registerHotKeys()
+        reloadDotfile()
     }
     
     func setupIcon() {
@@ -42,7 +40,7 @@ class FokusController: NSObject {
     }
 
     func readDotfile() {
-        guard let dotfile = Dotfile.shared.read(), let keyBindings = try? Parser(source: dotfile).keyBindings() else {
+        guard let keyBindings = try? Dotfile.shared.keyBindings() else {
             print("Could not parse dotfile.")
             return
         }
