@@ -27,3 +27,7 @@ public enum Action {
     case focus_up
     case focus_right
 }
+
+extension Modifier {
+
+}

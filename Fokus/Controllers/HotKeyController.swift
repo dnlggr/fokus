@@ -19,7 +19,7 @@ protocol HotKeyControllerDelegate: class {
 }
 
 class HotKeyController {
-    var hotKeys: [HotKey]
+    private var hotKeys: [HotKey]
 
     weak var delegate: HotKeyControllerDelegate?
 
@@ -27,10 +27,13 @@ class HotKeyController {
 
     init() {
         hotKeys = []
-        reload()
     }
 
     // MARK: API
+
+    func load() {
+        reload()
+    }
 
     func reload() {
         guard let keyBindings = readDotfile() else {
@@ -59,13 +62,9 @@ class HotKeyController {
             return nil
         }
 
-        var modifiers: NSEvent.ModifierFlags = []
-        keyBinding.modifiers.forEach { modifiers.insert($0.flag) }
+        let keyCombo = KeyCombo(key: key, modifiers: keyBinding.modifiers.modifierFlags)
 
-        let hotKey = HotKey(key: key, modifiers: modifiers)
-        hotKey.keyDownHandler = handler(for: keyBinding.action)
-
-        return hotKey
+        return HotKey(keyCombo: keyCombo, keyDownHandler: handler(for: keyBinding.action), keyUpHandler: nil)
     }
 
     private func handler(for action: Action) -> (() -> ()) {
@@ -78,21 +77,6 @@ class HotKeyController {
             return { self.delegate?.hotKeyControllerDidReceiveFocusUp(self) }
         case .focus_right:
             return { self.delegate?.hotKeyControllerDidReceiveFocusRight(self) }
-        }
-    }
-}
-
-fileprivate extension Modifier {
-    var flag: NSEvent.ModifierFlags {
-        switch self {
-        case .command:
-            return .command
-        case .control:
-            return .control
-        case .option:
-            return .option
-        case .shift:
-            return .shift
         }
     }
 }

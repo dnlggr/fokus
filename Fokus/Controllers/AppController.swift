@@ -10,62 +10,66 @@ import Cocoa
 import DotfileParser
 
 class AppController {
+    let focusController: FocusController
     let menuController: MenuController
     let hotKeyController: HotKeyController
 
     init(statusItem: NSStatusItem) {
-        menuController = MenuController(statusItem: statusItem)
+        focusController = FocusController()
         hotKeyController = HotKeyController()
+        menuController = MenuController(statusItem: statusItem)
 
-        menuController.delegate = self
         hotKeyController.delegate = self
+        menuController.delegate = self
+
+        hotKeyController.load()
     }
 }
 
 extension AppController: MenuControllerDelegate {
     func menuControllerSelectedQuit(_ menuController: MenuController) {
-        print("menu: quit")
+        NSApplication.shared.terminate(self)
     }
 
     func menuControllerSelectedReloadDotfile(_ menuController: MenuController) {
-        print("menu: reload")
+        hotKeyController.reload()
     }
 
     func menuControllerSelectedFocusLeft(_ menuController: MenuController) {
-        print("menu: left")
+        focusController.focusLeft()
     }
 
     func menuControllerSelectedFocusDown(_ menuController: MenuController) {
-        print("menu: down")
+        focusController.focusDown()
     }
 
     func menuControllerSelectedFocusUp(_ menuController: MenuController) {
-        print("menu: up")
+        focusController.focusUp()
     }
 
     func menuControllerSelectedFocusRight(_ menuController: MenuController) {
-        print("menu: right")
+        focusController.focusRight()
     }
 }
 
 extension AppController: HotKeyControllerDelegate {
     func hotKeyControllerDidReceiveFocusLeft(_ hotKeyController: HotKeyController) {
-        print("hotkey: left")
+        focusController.focusLeft()
     }
 
     func hotKeyControllerDidReceiveFocusDown(_ hotKeyController: HotKeyController) {
-         print("hotkey: down")
+         focusController.focusDown()
     }
 
     func hotKeyControllerDidReceiveFocusUp(_ hotKeyController: HotKeyController) {
-         print("hotkey: up")
+         focusController.focusUp()
     }
 
     func hotKeyControllerDidReceiveFocusRight(_ hotKeyController: HotKeyController) {
-         print("hotkey: right")
+         focusController.focusRight()
     }
 
     func hotKeyControllerDidRegisterHotKeys(for keyBindings: [KeyBinding]) {
-        print("hotkey new: \(keyBindings)")
+        menuController.keyBindings = keyBindings
     }
 }
