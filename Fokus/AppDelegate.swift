@@ -8,16 +8,19 @@
 
 import Cocoa
 
-@NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    
+    var appController: AppController?
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         checkAccessibilityAccess()
+        
+        appController = AppController(statusItem: statusItem)
     }
-    
+
     func checkAccessibilityAccess() {
         let options = [ kAXTrustedCheckOptionPrompt.takeUnretainedValue(): true ]
         AXIsProcessTrustedWithOptions(options as CFDictionary)
     }
-    
 }

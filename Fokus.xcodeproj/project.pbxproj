@@ -16,6 +16,9 @@
 		659AE78F2139D67E00C2E7D2 /* String+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659AE78E2139D67E00C2E7D2 /* String+Regex.swift */; };
 		659AE7912139E75F00C2E7D2 /* AST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659AE7902139E75F00C2E7D2 /* AST.swift */; };
 		659AE7932139ED7A00C2E7D2 /* ParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659AE7922139ED7A00C2E7D2 /* ParserTests.swift */; };
+		659AE795213A0D8A00C2E7D2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659AE794213A0D8A00C2E7D2 /* main.swift */; };
+		659AE799213A1BC400C2E7D2 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659AE798213A1BC400C2E7D2 /* AppController.swift */; };
+		659AE79B213A1CAF00C2E7D2 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659AE79A213A1CAF00C2E7D2 /* MenuController.swift */; };
 		65B3BCFC211E46E900F20D57 /* CaseIterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B3BCFB211E46E900F20D57 /* CaseIterable.swift */; };
 		65B3BCFE211F055200F20D57 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B3BCFD211F055200F20D57 /* Parser.swift */; };
 		65E2715C211CE16200A90FC1 /* DotfileParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E27147211CE16100A90FC1 /* DotfileParser.framework */; };
@@ -24,8 +27,7 @@
 		65E27167211CE9EA00A90FC1 /* Dotfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E27166211CE9EA00A90FC1 /* Dotfile.swift */; };
 		65FE6F65211640C1009BECBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FE6F64211640C1009BECBD /* AppDelegate.swift */; };
 		65FE6F67211640C2009BECBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65FE6F66211640C2009BECBD /* Assets.xcassets */; };
-		65FE6F6A211640C2009BECBD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65FE6F68211640C2009BECBD /* MainMenu.xib */; };
-		65FE6F732116420C009BECBD /* FokusController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FE6F722116420C009BECBD /* FokusController.swift */; };
+		65FE6F732116420C009BECBD /* AppControllerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FE6F722116420C009BECBD /* AppControllerOld.swift */; };
 		65FE6F8E211646A8009BECBD /* WindowLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65FE6F79211646A7009BECBD /* WindowLayout.framework */; };
 		65FE6F8F211646A8009BECBD /* WindowLayout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65FE6F79211646A7009BECBD /* WindowLayout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65FE6F9A211646C2009BECBD /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FE6F97211646C2009BECBD /* Window.swift */; };
@@ -99,6 +101,9 @@
 		659AE78E2139D67E00C2E7D2 /* String+Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Regex.swift"; sourceTree = "<group>"; };
 		659AE7902139E75F00C2E7D2 /* AST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AST.swift; sourceTree = "<group>"; };
 		659AE7922139ED7A00C2E7D2 /* ParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserTests.swift; sourceTree = "<group>"; };
+		659AE794213A0D8A00C2E7D2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		659AE798213A1BC400C2E7D2 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+		659AE79A213A1CAF00C2E7D2 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		65B3BCFB211E46E900F20D57 /* CaseIterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseIterable.swift; sourceTree = "<group>"; };
 		65B3BCFD211F055200F20D57 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		65E27147211CE16100A90FC1 /* DotfileParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DotfileParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,10 +113,9 @@
 		65FE6F61211640C1009BECBD /* Fokus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fokus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65FE6F64211640C1009BECBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65FE6F66211640C2009BECBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		65FE6F69211640C2009BECBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		65FE6F6B211640C2009BECBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65FE6F6C211640C2009BECBD /* Fokus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fokus.entitlements; sourceTree = "<group>"; };
-		65FE6F722116420C009BECBD /* FokusController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FokusController.swift; sourceTree = "<group>"; };
+		65FE6F722116420C009BECBD /* AppControllerOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppControllerOld.swift; sourceTree = "<group>"; };
 		65FE6F79211646A7009BECBD /* WindowLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WindowLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65FE6F7C211646A7009BECBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65FE6F97211646C2009BECBD /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
@@ -212,13 +216,15 @@
 		65FE6F63211640C1009BECBD /* Fokus */ = {
 			isa = PBXGroup;
 			children = (
+				659AE794213A0D8A00C2E7D2 /* main.swift */,
 				65FE6F64211640C1009BECBD /* AppDelegate.swift */,
-				65FE6F66211640C2009BECBD /* Assets.xcassets */,
-				65FE6F68211640C2009BECBD /* MainMenu.xib */,
-				65FE6F722116420C009BECBD /* FokusController.swift */,
+				659AE798213A1BC400C2E7D2 /* AppController.swift */,
+				659AE79A213A1CAF00C2E7D2 /* MenuController.swift */,
+				65FE6F722116420C009BECBD /* AppControllerOld.swift */,
 				65FE6FA521166397009BECBD /* Accessibility.swift */,
 				65FE6FA3211652EE009BECBD /* WindowInfo.swift */,
 				65FE6F6B211640C2009BECBD /* Info.plist */,
+				65FE6F66211640C2009BECBD /* Assets.xcassets */,
 				65FE6F6C211640C2009BECBD /* Fokus.entitlements */,
 			);
 			path = Fokus;
@@ -400,7 +406,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				65FE6F67211640C2009BECBD /* Assets.xcassets in Resources */,
-				65FE6F6A211640C2009BECBD /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,9 +447,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				65FE6F65211640C1009BECBD /* AppDelegate.swift in Sources */,
+				659AE79B213A1CAF00C2E7D2 /* MenuController.swift in Sources */,
+				659AE795213A0D8A00C2E7D2 /* main.swift in Sources */,
 				65FE6FA4211652EE009BECBD /* WindowInfo.swift in Sources */,
 				65FE6FA621166397009BECBD /* Accessibility.swift in Sources */,
-				65FE6F732116420C009BECBD /* FokusController.swift in Sources */,
+				65FE6F732116420C009BECBD /* AppControllerOld.swift in Sources */,
+				659AE799213A1BC400C2E7D2 /* AppController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,17 +487,6 @@
 			targetProxy = 65FE6F8C211646A8009BECBD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		65FE6F68211640C2009BECBD /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				65FE6F69211640C2009BECBD /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		654F00472139540200141A21 /* Debug */ = {

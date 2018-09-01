@@ -11,7 +11,7 @@ import HotKey
 import WindowLayout
 import DotfileParser
 
-class FokusController: NSObject {
+class AppControllerOld: NSViewController {
     
     // MARK: - Properties
     
@@ -36,7 +36,7 @@ class FokusController: NSObject {
         let icon = NSImage(named: NSImage.Name("StatusBarButtonImage"))
         icon?.isTemplate = true
         
-        statusItem.image = icon
+        statusItem.button?.image = icon
     }
 
     func readDotfile() {
@@ -56,25 +56,25 @@ class FokusController: NSObject {
             case .focus_left:
                 return (NSMenuItem(
                     title: "Focus Left",
-                    action: #selector(FokusController.moveFocusWest),
+                    action: #selector(AppControllerOld.moveFocusWest),
                     keyEquivalent: binding.key
                 ), binding)
             case .focus_down:
                 return (NSMenuItem(
                     title: "Focus Down",
-                    action: #selector(FokusController.moveFocusSouth),
+                    action: #selector(AppControllerOld.moveFocusSouth),
                     keyEquivalent: binding.key
                 ), binding)
             case .focus_up:
                 return (NSMenuItem(
                     title: "Focus Up",
-                    action: #selector(FokusController.moveFocusNorth),
+                    action: #selector(AppControllerOld.moveFocusNorth),
                     keyEquivalent: binding.key
                 ), binding)
             case .focus_right:
                 return (NSMenuItem(
                     title: "Focus Right",
-                    action: #selector(FokusController.moveFocusEast),
+                    action: #selector(AppControllerOld.moveFocusEast),
                     keyEquivalent: binding.key
                 ), binding)
             }
@@ -93,7 +93,7 @@ class FokusController: NSObject {
 
         let reload = NSMenuItem(
             title: "Reload Dotfile",
-            action: #selector(FokusController.reloadDotfile),
+            action: #selector(AppControllerOld.reloadDotfile),
             keyEquivalent: ""
         )
         reload.target = self
