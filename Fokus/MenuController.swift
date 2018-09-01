@@ -29,19 +29,19 @@ class MenuController {
     }()
 
     lazy var quit: NSMenuItem = {
-        NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
+        makeItem(title: "Quit", action: #selector(quit(_:)), keyEquivalent: "q")
     }()
 
     lazy var reloadDotfile: NSMenuItem = {
-        makeCustomItem(title: "Reload Dotfile", action: #selector(MenuController.reloadDotfile(_:)), keyEquivalent: "")
+        makeItem(title: "Reload Dotfile", action: #selector(reloadDotfile(_:)), keyEquivalent: "")
     }()
 
     lazy var focusEntries: [NSMenuItem] = {
         [
-            makeCustomItem(title: "Focus Left", action: #selector(focusLeft(_:)), keyEquivalent: ""),
-            makeCustomItem(title: "Focus Right", action: #selector(focusRight(_:)), keyEquivalent: ""),
-            makeCustomItem(title: "Focus Up", action: #selector(focusUp(_:)), keyEquivalent: ""),
-            makeCustomItem(title: "Focus Down", action: #selector(focusDown(_:)), keyEquivalent: "")
+            makeItem(title: "Focus Left", action: #selector(focusLeft(_:)), keyEquivalent: ""),
+            makeItem(title: "Focus Right", action: #selector(focusRight(_:)), keyEquivalent: ""),
+            makeItem(title: "Focus Up", action: #selector(focusUp(_:)), keyEquivalent: ""),
+            makeItem(title: "Focus Down", action: #selector(focusDown(_:)), keyEquivalent: "")
         ]
     }()
 
@@ -70,7 +70,7 @@ class MenuController {
         return menu
     }
 
-    func makeCustomItem(title: String, action: Selector? = nil, keyEquivalent: String = "") -> NSMenuItem {
+    func makeItem(title: String, action: Selector? = nil, keyEquivalent: String = "") -> NSMenuItem {
         let item = NSMenuItem(title: title, action: action, keyEquivalent: keyEquivalent)
 
         item.target = self

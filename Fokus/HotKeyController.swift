@@ -27,7 +27,6 @@ class HotKeyController {
 
     init() {
         hotKeys = []
-
         reload()
     }
 
