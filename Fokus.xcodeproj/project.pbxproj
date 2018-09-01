@@ -19,6 +19,7 @@
 		659AE795213A0D8A00C2E7D2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659AE794213A0D8A00C2E7D2 /* main.swift */; };
 		659AE799213A1BC400C2E7D2 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659AE798213A1BC400C2E7D2 /* AppController.swift */; };
 		659AE79B213A1CAF00C2E7D2 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659AE79A213A1CAF00C2E7D2 /* MenuController.swift */; };
+		659AE79D213ABFF200C2E7D2 /* HotKeyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659AE79C213ABFF200C2E7D2 /* HotKeyController.swift */; };
 		65B3BCFC211E46E900F20D57 /* CaseIterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B3BCFB211E46E900F20D57 /* CaseIterable.swift */; };
 		65B3BCFE211F055200F20D57 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B3BCFD211F055200F20D57 /* Parser.swift */; };
 		65E2715C211CE16200A90FC1 /* DotfileParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E27147211CE16100A90FC1 /* DotfileParser.framework */; };
@@ -104,6 +105,7 @@
 		659AE794213A0D8A00C2E7D2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		659AE798213A1BC400C2E7D2 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 		659AE79A213A1CAF00C2E7D2 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		659AE79C213ABFF200C2E7D2 /* HotKeyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotKeyController.swift; sourceTree = "<group>"; };
 		65B3BCFB211E46E900F20D57 /* CaseIterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseIterable.swift; sourceTree = "<group>"; };
 		65B3BCFD211F055200F20D57 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		65E27147211CE16100A90FC1 /* DotfileParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DotfileParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,6 +222,7 @@
 				65FE6F64211640C1009BECBD /* AppDelegate.swift */,
 				659AE798213A1BC400C2E7D2 /* AppController.swift */,
 				659AE79A213A1CAF00C2E7D2 /* MenuController.swift */,
+				659AE79C213ABFF200C2E7D2 /* HotKeyController.swift */,
 				65FE6F722116420C009BECBD /* AppControllerOld.swift */,
 				65FE6FA521166397009BECBD /* Accessibility.swift */,
 				65FE6FA3211652EE009BECBD /* WindowInfo.swift */,
@@ -447,6 +450,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65FE6F65211640C1009BECBD /* AppDelegate.swift in Sources */,
+				659AE79D213ABFF200C2E7D2 /* HotKeyController.swift in Sources */,
 				659AE79B213A1CAF00C2E7D2 /* MenuController.swift in Sources */,
 				659AE795213A0D8A00C2E7D2 /* main.swift in Sources */,
 				65FE6FA4211652EE009BECBD /* WindowInfo.swift in Sources */,
