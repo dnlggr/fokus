@@ -18,7 +18,7 @@ protocol HotKeyControllerDelegate: class {
     func hotKeyControllerDidRegisterHotKeys(for keyBindings: [KeyBinding])
 }
 
-class HotKeyController {
+class HotKeyController: Controller {
     private var hotKeys: [HotKey]
 
     weak var delegate: HotKeyControllerDelegate?
@@ -29,13 +29,9 @@ class HotKeyController {
         hotKeys = []
     }
 
-    // MARK: API
+    // MARK: Controller API
 
     func load() {
-        reload()
-    }
-
-    func reload() {
         guard let keyBindings = readDotfile() else {
             return
         }

@@ -13,6 +13,7 @@
 		65521CB5211F1BF600A77D23 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65521CB4211F1BF600A77D23 /* Language.swift */; };
 		6557B36221175B9100B203E0 /* Axis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557B36121175B9100B203E0 /* Axis.swift */; };
 		6557B3642117667900B203E0 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557B3632117667900B203E0 /* Geometry.swift */; };
+		6565E181213DA550009C81B1 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6565E180213DA550009C81B1 /* Controller.swift */; };
 		659AE78F2139D67E00C2E7D2 /* String+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659AE78E2139D67E00C2E7D2 /* String+Regex.swift */; };
 		659AE7912139E75F00C2E7D2 /* AST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659AE7902139E75F00C2E7D2 /* AST.swift */; };
 		659AE7932139ED7A00C2E7D2 /* ParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659AE7922139ED7A00C2E7D2 /* ParserTests.swift */; };
@@ -100,6 +101,7 @@
 		65521CB4211F1BF600A77D23 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		6557B36121175B9100B203E0 /* Axis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Axis.swift; sourceTree = "<group>"; };
 		6557B3632117667900B203E0 /* Geometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
+		6565E180213DA550009C81B1 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		659AE78E2139D67E00C2E7D2 /* String+Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Regex.swift"; sourceTree = "<group>"; };
 		659AE7902139E75F00C2E7D2 /* AST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AST.swift; sourceTree = "<group>"; };
 		659AE7922139ED7A00C2E7D2 /* ParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserTests.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 		6565E17F213AE06E009C81B1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6565E180213DA550009C81B1 /* Controller.swift */,
 				659AE798213A1BC400C2E7D2 /* AppController.swift */,
 				659AE79A213A1CAF00C2E7D2 /* MenuController.swift */,
 				659AE79C213ABFF200C2E7D2 /* HotKeyController.swift */,
@@ -473,6 +476,7 @@
 				659AE7A1213ADB5A00C2E7D2 /* FocusController.swift in Sources */,
 				659AE79F213ACDD600C2E7D2 /* Modifer+ModifierFlags.swift in Sources */,
 				659AE79B213A1CAF00C2E7D2 /* MenuController.swift in Sources */,
+				6565E181213DA550009C81B1 /* Controller.swift in Sources */,
 				659AE795213A0D8A00C2E7D2 /* main.swift in Sources */,
 				65FE6FA4211652EE009BECBD /* WindowInfo.swift in Sources */,
 				65FE6FA621166397009BECBD /* Accessibility.swift in Sources */,

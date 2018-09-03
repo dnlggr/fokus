@@ -9,7 +9,7 @@
 import Cocoa
 import DotfileParser
 
-class AppController {
+class AppController: Controller {
     let focusController: FocusController
     let menuController: MenuController
     let hotKeyController: HotKeyController
@@ -21,7 +21,12 @@ class AppController {
 
         hotKeyController.delegate = self
         menuController.delegate = self
+    }
 
+    // MARK: Controller API
+
+    func load() {
+        menuController.load()
         hotKeyController.load()
     }
 }

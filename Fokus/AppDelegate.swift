@@ -16,7 +16,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         checkAccessibilityAccess()
         
-        appController = AppController(statusItem: statusItem)
+        let appController = AppController(statusItem: statusItem)
+        self.appController = appController
+        
+        appController.load()
     }
 
     func checkAccessibilityAccess() {

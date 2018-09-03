@@ -18,7 +18,7 @@ protocol MenuControllerDelegate: class {
     func menuControllerSelectedFocusRight(_ menuController: MenuController)
 }
 
-class MenuController {
+class MenuController: Controller {
     let statusItem: NSStatusItem
 
     weak var delegate: MenuControllerDelegate?
@@ -39,13 +39,9 @@ class MenuController {
         self.statusItem = statusItem
     }
 
-    // MARK: API
+    // MARK: Controller API
 
     func load() {
-        reload()
-    }
-
-    func reload() {
         statusItem.button?.image = icon
         statusItem.menu = makeMenu()
     }
