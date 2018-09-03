@@ -96,7 +96,7 @@
 /* Begin PBXFileReference section */
 		654F003F2139540200141A21 /* DotfileParserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DotfileParserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		654F00412139540200141A21 /* LexerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexerTests.swift; sourceTree = "<group>"; };
-		654F00432139540200141A21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		654F00432139540200141A21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tests/Info.plist; sourceTree = "<group>"; };
 		654F004A213955FF00141A21 /* dotfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = dotfile; sourceTree = "<group>"; };
 		65521CB4211F1BF600A77D23 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		6557B36121175B9100B203E0 /* Axis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Axis.swift; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 		65B3BCFB211E46E900F20D57 /* CaseIterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseIterable.swift; sourceTree = "<group>"; };
 		65B3BCFD211F055200F20D57 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		65E27147211CE16100A90FC1 /* DotfileParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DotfileParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		65E2714A211CE16100A90FC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65E2714A211CE16100A90FC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		65E27164211CE17C00A90FC1 /* Lexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lexer.swift; sourceTree = "<group>"; };
 		65E27166211CE9EA00A90FC1 /* Dotfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dotfile.swift; sourceTree = "<group>"; };
 		65FE6F61211640C1009BECBD /* Fokus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fokus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,43 +169,67 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		654F00402139540200141A21 /* DotfileParserTests */ = {
+		654F00402139540200141A21 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				65E2714A211CE16100A90FC1 /* Info.plist */,
 				654F00412139540200141A21 /* LexerTests.swift */,
 				659AE7922139ED7A00C2E7D2 /* ParserTests.swift */,
-				654F00432139540200141A21 /* Info.plist */,
 				654F004A213955FF00141A21 /* dotfile */,
 			);
-			path = DotfileParserTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
-		6565E17E213AE056009C81B1 /* Helpers */ = {
+		6565E182213DA5FB009C81B1 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				65FE6FA3211652EE009BECBD /* WindowInfo.swift */,
-				65FE6FA521166397009BECBD /* Accessibility.swift */,
-				659AE79E213ACDD600C2E7D2 /* Modifer+ModifierFlags.swift */,
+				659AE794213A0D8A00C2E7D2 /* main.swift */,
+				65FE6F64211640C1009BECBD /* AppDelegate.swift */,
+				659AE798213A1BC400C2E7D2 /* AppController.swift */,
 			);
-			path = Helpers;
+			path = App;
 			sourceTree = "<group>";
 		};
-		6565E17F213AE06E009C81B1 /* Controllers */ = {
+		6565E183213DA601009C81B1 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				659AE79A213A1CAF00C2E7D2 /* MenuController.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		6565E184213DA609009C81B1 /* HotKeys */ = {
+			isa = PBXGroup;
+			children = (
+				659AE79C213ABFF200C2E7D2 /* HotKeyController.swift */,
+			);
+			path = HotKeys;
+			sourceTree = "<group>";
+		};
+		6565E185213DA60F009C81B1 /* Focus */ = {
+			isa = PBXGroup;
+			children = (
+				659AE7A0213ADB5A00C2E7D2 /* FocusController.swift */,
+				65FE6FA3211652EE009BECBD /* WindowInfo.swift */,
+				65FE6FA521166397009BECBD /* Accessibility.swift */,
+			);
+			path = Focus;
+			sourceTree = "<group>";
+		};
+		6565E186213DA735009C81B1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				6565E180213DA550009C81B1 /* Controller.swift */,
-				659AE798213A1BC400C2E7D2 /* AppController.swift */,
-				659AE79A213A1CAF00C2E7D2 /* MenuController.swift */,
-				659AE79C213ABFF200C2E7D2 /* HotKeyController.swift */,
-				659AE7A0213ADB5A00C2E7D2 /* FocusController.swift */,
+				659AE79E213ACDD600C2E7D2 /* Modifer+ModifierFlags.swift */,
 			);
-			path = Controllers;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		65E27148211CE16100A90FC1 /* DotfileParser */ = {
 			isa = PBXGroup;
 			children = (
-				65E2714A211CE16100A90FC1 /* Info.plist */,
+				654F00402139540200141A21 /* Tests */,
+				654F00432139540200141A21 /* Info.plist */,
 				65E27166211CE9EA00A90FC1 /* Dotfile.swift */,
 				65521CB4211F1BF600A77D23 /* Language.swift */,
 				65E27164211CE17C00A90FC1 /* Lexer.swift */,
@@ -223,7 +247,6 @@
 				65FE6F63211640C1009BECBD /* Fokus */,
 				65FE6F7A211646A7009BECBD /* WindowLayout */,
 				65E27148211CE16100A90FC1 /* DotfileParser */,
-				654F00402139540200141A21 /* DotfileParserTests */,
 				65FE6F62211640C1009BECBD /* Products */,
 				65FE6F9D21164A35009BECBD /* HotKey.framework */,
 				65FE6FA121164A62009BECBD /* HotKey.framework.dSYM */,
@@ -244,13 +267,14 @@
 		65FE6F63211640C1009BECBD /* Fokus */ = {
 			isa = PBXGroup;
 			children = (
-				659AE794213A0D8A00C2E7D2 /* main.swift */,
-				65FE6F64211640C1009BECBD /* AppDelegate.swift */,
-				6565E17F213AE06E009C81B1 /* Controllers */,
-				6565E17E213AE056009C81B1 /* Helpers */,
 				65FE6F6B211640C2009BECBD /* Info.plist */,
 				65FE6F66211640C2009BECBD /* Assets.xcassets */,
 				65FE6F6C211640C2009BECBD /* Fokus.entitlements */,
+				6565E182213DA5FB009C81B1 /* App */,
+				6565E186213DA735009C81B1 /* Common */,
+				6565E183213DA601009C81B1 /* Menu */,
+				6565E184213DA609009C81B1 /* HotKeys */,
+				6565E185213DA60F009C81B1 /* Focus */,
 			);
 			path = Fokus;
 			sourceTree = "<group>";
@@ -258,12 +282,12 @@
 		65FE6F7A211646A7009BECBD /* WindowLayout */ = {
 			isa = PBXGroup;
 			children = (
+				65FE6F7C211646A7009BECBD /* Info.plist */,
 				6557B36121175B9100B203E0 /* Axis.swift */,
 				65FE6F99211646C2009BECBD /* Direction.swift */,
 				6557B3632117667900B203E0 /* Geometry.swift */,
 				65FE6F98211646C2009BECBD /* Screen.swift */,
 				65FE6F97211646C2009BECBD /* Window.swift */,
-				65FE6F7C211646A7009BECBD /* Info.plist */,
 			);
 			path = WindowLayout;
 			sourceTree = "<group>";
@@ -523,7 +547,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 3JMWW3SW7U;
-				INFOPLIST_FILE = DotfileParserTests/Info.plist;
+				INFOPLIST_FILE = DotfileParser/Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -541,7 +565,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 3JMWW3SW7U;
-				INFOPLIST_FILE = DotfileParserTests/Info.plist;
+				INFOPLIST_FILE = DotfileParser/Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
