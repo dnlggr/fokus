@@ -1,18 +1,30 @@
-# Fokus :left_right_arrow: :arrow_up_down:
+# Fokus ⌨️
 
 A simple window switcher for tiled windows in macOS.
 
+## What does it do?
+
+_Fokus_ helps you to intuitively switch between windows using customizable keyboard shortcuts.
+
+You can configure shortcuts for switching to the left, right, bottom, and top window, relative to the current active window.
+
+Fokus is not a tiling window manager. All it does is move focus between windows that are already tiled e.g. using [Spectacle](https://github.com/eczarny/spectacle).
+
 ## Installation
 
-Not yet setup.
+🌍 Download the [latest release here](https://github.com/dnlggr/Fokus/releases).
 
-Currently, you have to download the project and build the app in Xcode to try it out. Make sure to run `carthage update` before building.
+Make sure to grant accessibility access to _Fokus.app_ in the Security & Privacy preferences. The app will ask you to do so on startup, if you forget to grant access.
 
-Make sure to grant accessibility access to Xcode in the Security & Privacy preferences. The app will ask you to do so on startup, if you forget it.
+I currently do not have an Apple Developer Program membership. Therefore releases are not code signed. You can run the app by ctrl-clicking it when you first open it.
+
+---
+
+🔧 Of course you can also build the app on your own by cloning this repo and building the app in Xcode. Make sure to run `carthage update` before building.
 
 ## Configuration
 
-Hotkeys can be configured via a dotfile at `~/.fokus` which is read at app startup.
+Keyboard shortcuts can be configured via a dotfile at `~/.fokus`.
 
 ### Example
 
@@ -27,3 +39,7 @@ bind command+control+j focus_down
 bind command+control+k focus_up
 bind command+control+l focus_right
 ```
+
+## Misc.
+
+_Fokus_ is work in progress. The window switching logic is quite rudimentary. Suggestions and improvements via GitHub issues or pull requests are welcome!
