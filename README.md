@@ -1,4 +1,4 @@
-# Fokus ⌨️
+# [WIP] Fokus ⌨️
 
 A simple window switcher for tiled windows in macOS.
 
