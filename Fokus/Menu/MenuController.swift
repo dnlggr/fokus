@@ -26,7 +26,7 @@ class MenuController: Controller {
     // MARK: Configuration
 
     lazy var icon: NSImage? = {
-        NSImage(named: NSImage.Name("StatusBarButtonImage"))
+        NSImage(named: "StatusBarButtonImage")
     }()
 
     var keyBindings: [KeyBinding] = [] {
